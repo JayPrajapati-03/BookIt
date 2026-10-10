@@ -10,6 +10,7 @@ import {
 import { errorHandler } from './middlewares/errorHandler.js';
 import { isDbConnected } from './db/connection.js';
 import { AppError } from './utils/errors.js';
+import { apiRouter } from './routes/api.routes.js';
 
 export function createApp(): Express {
   const app = express();
@@ -55,13 +56,8 @@ export function createApp(): Express {
     }
   });
 
-  // Base API v1 placeholder router
-  const apiV1Router = express.Router();
-  apiV1Router.get('/ping', (_req, res) => {
-    res.json({ message: 'pong', timestamp: new Date().toISOString() });
-  });
-
-  app.use('/api/v1', apiV1Router);
+  // Mount full API v1 router
+  app.use('/api/v1', apiRouter);
 
   // 404 handler
   app.use((_req, _res, next) => {

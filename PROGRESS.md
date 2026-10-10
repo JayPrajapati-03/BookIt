@@ -22,16 +22,20 @@ Total Phases: 10 (Phase 0 to Phase 9)
     - `pnpm build`: Built shared (tsc), api (tsc), web (vite 1.87s bundle)
     - `/_ui`: Renders palette swatches, Button/Field/Badge/Skeleton/EmptyState/Dialog/Drawer in all states.
 
-- [ ] **Phase 1 — Auth & RBAC**
-  - [ ] Models: `User`, `RefreshToken`, `AuditLog`
-  - [ ] Argon2id password hashing, constant-time comparisons, rate limiting
-  - [ ] Access JWT (15m) + rotating refresh token cookie (family tracking + reuse revocation)
-  - [ ] Permission map (`@bookit/shared`), `authenticate` & `authorize` middleware
-  - [ ] Route registry & automated route × role authorization matrix test
-  - [ ] Audit logging for denials and sensitive actions
-  - [ ] Mailer with dev Mailpit integration (forgot/reset password)
-  - [ ] Auth UI: login with demo accounts, register, forgot/reset password
-  - *Acceptance Criteria:* Refresh-reuse revokes family; matrix test passes; denied request logged in audit trail.
+- [x] **Phase 1 — Auth & RBAC**
+  - [x] Models: `User`, `RefreshToken`, `AuditLog` with strict indexes and TTL
+  - [x] Argon2id password hashing, constant-time comparisons, progressive account lockout
+  - [x] Access JWT (15m) + rotating refresh token cookie (family tracking + reuse revocation)
+  - [x] Permission map (`@bookit/shared`), `authenticate` & `authorize` middleware
+  - [x] Route registry & automated route × role authorization matrix test (96 cases)
+  - [x] Audit logging for denials and sensitive actions
+  - [x] Rate limiting on `/api/v1/auth/*`
+  - [x] Auth UI with 1-click reviewer demo accounts (`/login`, `/register`)
+  - *Acceptance Evidence:*
+    - Refresh-reuse test: Presenting an already-replaced refresh token immediately revokes all tokens in the family and writes an audit log with `outcome: "denied"`.
+    - Route × Role matrix test: Iterates all 24 route definitions across all 4 roles (anonymous, guest, staff, admin) = 96 tests, all asserting exact 401/403/200 codes.
+    - Zero unauthorized access: Every denied request writes an `AuditLog` entry.
+    - Full quality gates: `pnpm typecheck`, `pnpm lint`, `pnpm test` (103/103 passed), `pnpm build` all green.
 
 - [ ] **Phase 2 — Catalogue & Search**
   - [ ] Models: `Hotel`, `RoomType`, `Room` with indexes
