@@ -1,0 +1,10 @@
+# Architectural & Design Decisions (DECISIONS.md)
+
+| Date | Decision | Alternatives Considered | Rationale / Why |
+|---|---|---|---|
+| 2026-10-10 | Monorepo structured with pnpm workspaces (`apps/api`, `apps/web`, `packages/shared`, `infra`, `tools`, `docs`) | Turborepo / Nx / standalone repos | Lightweight native pnpm workspaces satisfy all constraints without external build daemon overhead, while sharing code seamlessly. |
+| 2026-10-10 | Plain CSS Modules + native CSS custom properties for styling | Tailwind CSS, Styled Components, Emotion | Explicitly mandated in B2: Zero utility-class clutter, complete control over design tokens, no external UI kit dependencies. |
+| 2026-10-10 | Argon2id for password hashing with constant-time verification | bcrypt, pbkdf2 | Argon2id provides superior resistance to GPU/ASIC attacks and side-channel timing attacks, meeting modern OWASP recommendations. |
+| 2026-10-10 | Date handling strictly in UTC midnight with Asia/Kolkata timezone context | Browser local Date parsing, Moment.js | Prevents daylight saving or local midnight discrepancies in hotel night counting; guarantees consistent date range queries. |
+| 2026-10-10 | Lucide React for consistent icon grammar | Mixed icons, emojis, FontAwesome | Unified stroke width, lightweight SVGs, accessible naming. |
+| 2026-10-10 | In-memory MongoDB replica set (`mongodb-memory-server`) for hermetic integration tests | Docker Mongo requirement during tests | Guarantees multi-document transactions work in automated Vitest runs without requiring external background daemons to be running. |

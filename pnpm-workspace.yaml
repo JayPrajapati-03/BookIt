@@ -1,0 +1,9 @@
+packages:
+  - 'packages/*'
+  - 'apps/*'
+  - 'tools/*'
+
+allowBuilds:
+  argon2: true
+  esbuild: true
+  mongodb-memory-server: true

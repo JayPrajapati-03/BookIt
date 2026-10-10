@@ -1,0 +1,46 @@
+services:
+  # MongoDB Single-Node Replica Set (Required for Mongo Multi-Document Transactions)
+  mongo:
+    image: mongo:8.0
+    container_name: bookit-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: bookit
+    entrypoint:
+      - bash
+      - -c
+      - |
+        /usr/local/bin/docker-entrypoint.sh mongod --replSet rs0 --bind_ip_all &
+        MONGOPID=$$!
+        echo "Waiting for mongod to initialize..."
+        until mongosh --eval "db.adminCommand('ping')" > /dev/null 2>&1; do
+          sleep 1
+        done
+        echo "Initializing replica set rs0..."
+        mongosh --eval "
+          try {
+            rs.status();
+          } catch (err) {
+            rs.initiate({
+              _id: 'rs0',
+              members: [{ _id: 0, host: '127.0.0.1:27017' }]
+            });
+          }
+        "
+        wait $$MONGOPID
+    volumes:
+      - mongo-data:/data/db
+
+  # Mailpit: Local zero-config SMTP test server & web mail viewer
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: bookit-mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025" # SMTP port
+      - "8025:8025" # Web UI port
+
+volumes:
+  mongo-data:

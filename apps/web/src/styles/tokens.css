@@ -1,0 +1,59 @@
+:root {
+  /* Brand & Core Color Tokens */
+  --color-chalk: #f5f7f6;
+  --color-lagoon: #0f2b2e;
+  --color-tide: #1f6f78;
+  --color-marigold: #f2b33d;
+  --color-signal: #d9482b;
+  --color-stone: #d6dcd9;
+  --color-sand: #ebefea;
+
+  /* Semantic UI Tokens */
+  --bg-primary: var(--color-chalk);
+  --bg-surface: #ffffff;
+  --bg-surface-subtle: var(--color-sand);
+  --bg-dark: var(--color-lagoon);
+
+  --text-primary: var(--color-lagoon);
+  --text-secondary: #4b6365;
+  --text-muted: #748c8e;
+  --text-inverse: var(--color-chalk);
+
+  --border-hairline: 1px solid var(--color-stone);
+  --border-focus: 2px solid var(--color-tide);
+
+  /* Status Colors */
+  --status-success: #1b7a43;
+  --status-success-bg: #eaf6ee;
+  --status-warning: #9e6400;
+  --status-warning-bg: #fdf6e7;
+  --status-danger: var(--color-signal);
+  --status-danger-bg: #fcece9;
+
+  /* Typography */
+  --font-sans: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+}
