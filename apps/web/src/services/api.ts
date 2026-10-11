@@ -83,6 +83,19 @@ export const hotelsApi = {
     apiClient.get(`/hotels/${slug}/reviews`, { params: { cursor, limit: 5 } }),
 };
 
+export type HotelSuggestion = {
+  label: string;
+  value: string;
+};
+
+export async function getHotelSuggestions(query: string): Promise<HotelSuggestion[]> {
+  const q = query.trim();
+  if (!q) return [];
+
+  const res = await hotelsApi.suggest(q);
+  return res.data.data || [];
+}
+
 // ─── Bookings ─────────────────────────────────────────────────────────────────
 export const bookingsApi = {
   quote: (roomTypeId: string, checkIn: string, checkOut: string, adults: number) =>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../common/Button/Button.js';
-import { apiClient } from '../../../services/api.js';
+import { getHotelSuggestions, type HotelSuggestion } from '../../../services/api.js';
 import { ChevronDown, MapPin, Search } from 'lucide-react';
 import styles from './SentenceSearch.module.css';
 
@@ -14,16 +14,15 @@ export const SentenceSearch: React.FC = () => {
   const [guests, setGuests] = useState(2);
 
   const [activePopover, setActivePopover] = useState<'city' | 'dates' | 'guests' | null>(null);
-  const [suggestions, setSuggestions] = useState<Array<{ label: string; value: string }>>([]);
+  const [suggestions, setSuggestions] = useState<HotelSuggestion[]>([]);
   const [cityInput, setCityInput] = useState('Udaipur');
 
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (activePopover === 'city') {
-      apiClient
-        .get(`/hotels/suggest?q=${encodeURIComponent(cityInput)}`)
-        .then((res) => setSuggestions(res.data.data))
+      getHotelSuggestions(cityInput)
+        .then(setSuggestions)
         .catch(() => {});
     }
   }, [cityInput, activePopover]);

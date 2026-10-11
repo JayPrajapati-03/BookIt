@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { apiClient } from '../../../services/api.js';
+import { getHotelSuggestions, type HotelSuggestion } from '../../../services/api.js';
 import { MapPin, Calendar, Users, Search, ChevronDown } from 'lucide-react';
 import styles from './HeroSearch.module.css';
 
@@ -23,15 +23,14 @@ export const HeroSearch: React.FC = () => {
   const [guests, setGuests] = useState(2);
   const [activePanel, setActivePanel] = useState<'city' | 'dates' | 'guests' | null>(null);
   const [cityInput, setCityInput] = useState('Udaipur');
-  const [suggestions, setSuggestions] = useState<Array<{ label: string; value: string }>>([]);
+  const [suggestions, setSuggestions] = useState<HotelSuggestion[]>([]);
 
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (activePanel === 'city') {
-      apiClient
-        .get(`/hotels/suggest?q=${encodeURIComponent(cityInput)}`)
-        .then((res) => setSuggestions(res.data.data || []))
+      getHotelSuggestions(cityInput)
+        .then(setSuggestions)
         .catch(() => {});
     }
   }, [cityInput, activePanel]);
