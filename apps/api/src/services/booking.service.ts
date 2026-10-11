@@ -119,7 +119,6 @@ export class BookingService {
 
         const roomId = await findAvailableRoom(params.roomTypeId, checkIn, checkOut);
         if (!roomId) {
-          await session.abortTransaction();
           throw new AppError('No rooms available for selected dates', 'SOLD_OUT', 409);
         }
 
