@@ -31,7 +31,7 @@ jobs:
           node-version: 22
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: 12.10.1
 
@@ -46,7 +46,7 @@ jobs:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile || pnpm install
@@ -61,6 +61,11 @@ jobs:
         run: pnpm lint
 
       - name: Test
+        env:
+          MONGODB_URI: mongodb://localhost:27017/bookit_test
+          JWT_SECRET: ci-test-secret-key
+          JWT_REFRESH_SECRET: ci-test-refresh-secret
+          NODE_ENV: test
         run: pnpm test
 
       - name: Build applications
