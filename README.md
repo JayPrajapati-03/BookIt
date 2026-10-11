@@ -1,6 +1,6 @@
 # BookIt — Real-Time Boutique Hotel Booking Platform
 
-[![CI](https://github.com/bookit/bookit/actions/workflows/ci.yml/badge.svg)](https://github.com/bookit/bookit/actions)
+[![CI](https://github.com/JayPrajapati-03/BookIt/actions/workflows/ci.yml/badge.svg)](https://github.com/JayPrajapati-03/BookIt/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 [![Express](https://img.shields.io/badge/Express-5.0-lightgrey.svg)](https://expressjs.com/)
