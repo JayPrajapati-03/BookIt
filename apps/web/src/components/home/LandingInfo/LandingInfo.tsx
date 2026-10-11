@@ -84,16 +84,41 @@ export const LandingInfo: React.FC<LandingInfoProps> = ({ variant }) => {
   if (variant === 'about') {
     return (
       <section id="about" className={`${styles.section} ${styles.aboutSection}`}>
-        <div className={`${styles.inner} ${styles.aboutGrid}`}>
-          <div>
+        <div className={styles.inner}>
+          <div className={`${styles.sectionHeader} ${styles.centerHeader}`}>
             <span className={styles.eyebrow}>About BookIt</span>
             <h2 className={styles.title}>A curated booking layer for boutique Indian stays</h2>
+            <p className={styles.subtitle}>
+              Built for travellers who want authentic stays, clear details, and dependable booking
+              confidence.
+            </p>
           </div>
-          <p className={styles.copy}>
-            BookIt focuses on handpicked heritage hotels, havelis, palace resorts, lodges, and
-            boutique retreats. The product is built around verified availability, protected checkout
-            holds, and clear property details so travellers can choose confidently.
-          </p>
+          <div className={styles.aboutCards}>
+            <div className={styles.aboutCard}>
+              <span className={styles.aboutStat}>01</span>
+              <h3>Handpicked Properties</h3>
+              <p>
+                Heritage hotels, havelis, palace resorts, lodges, and boutique retreats selected
+                for character and hospitality.
+              </p>
+            </div>
+            <div className={styles.aboutCard}>
+              <span className={styles.aboutStat}>02</span>
+              <h3>Clear Booking Flow</h3>
+              <p>
+                Search, compare, hold, and confirm with straightforward dates, guest counts, and
+                room-level availability.
+              </p>
+            </div>
+            <div className={styles.aboutCard}>
+              <span className={styles.aboutStat}>03</span>
+              <h3>Traveller Confidence</h3>
+              <p>
+                Verified property information and protected checkout holds help avoid stale
+                listings and booking surprises.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     );

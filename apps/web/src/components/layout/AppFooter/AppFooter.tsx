@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Mail, Phone, ShieldCheck } from 'lucide-react';
+import { Heart, Mail, Phone, Send, ShieldCheck } from 'lucide-react';
 import styles from './AppFooter.module.css';
 
 export const AppFooter: React.FC = () => {
@@ -121,31 +121,40 @@ export const AppFooter: React.FC = () => {
           <div id="contact" className={styles.contactCol}>
             <h4 className={styles.colTitle}>Contact Us</h4>
             <p className={styles.contactCopy}>
-              Questions before booking? Reach the right desk.
+              Send a quick query and our desk will get back to you.
             </p>
-            <div className={styles.footerContactList}>
-              <a
-                href="mailto:support@bookit.example?subject=Booking%20support"
-                className={styles.footerContactItem}
-              >
-                <Mail size={15} />
-                Booking support
-              </a>
-              <a
-                href="mailto:partners@bookit.example?subject=List%20my%20property"
-                className={styles.footerContactItem}
-              >
-                <Mail size={15} />
-                List your property
-              </a>
-              <a
-                href="mailto:hello@bookit.example?subject=General%20enquiry"
-                className={styles.footerContactItem}
-              >
-                <Mail size={15} />
-                General enquiry
-              </a>
-            </div>
+            <form
+              className={styles.contactForm}
+              action="mailto:support@bookit.example"
+              method="post"
+              encType="text/plain"
+            >
+              <input
+                className={styles.contactInput}
+                type="text"
+                name="name"
+                placeholder="Your name"
+                aria-label="Your name"
+              />
+              <input
+                className={styles.contactInput}
+                type="email"
+                name="email"
+                placeholder="Email address"
+                aria-label="Email address"
+              />
+              <textarea
+                className={styles.contactTextarea}
+                name="message"
+                placeholder="Write your query..."
+                aria-label="Write your query"
+                rows={3}
+              />
+              <button className={styles.contactSubmit} type="submit">
+                <Send size={14} />
+                Send Query
+              </button>
+            </form>
           </div>
         </div>
 

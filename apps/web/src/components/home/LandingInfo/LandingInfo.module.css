@@ -130,30 +130,51 @@
 }
 
 .aboutSection {
-  background: var(--color-sand);
+  background: #eef2ef;
 }
 
-.aboutGrid {
+.aboutCards {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
-.copy {
-  color: var(--text-secondary);
+.aboutCard {
+  border: 1px solid rgba(15, 43, 46, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 24px;
+}
+
+.aboutStat {
+  display: inline-flex;
+  color: var(--color-tide);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+.aboutCard h3 {
+  color: var(--color-lagoon);
   font-size: 1rem;
-  line-height: 1.8;
+  margin: 0 0 8px;
+}
+
+.aboutCard p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.65;
   margin: 0;
 }
 
 @media (max-width: 820px) {
-  .sectionHeader,
-  .aboutGrid {
+  .sectionHeader {
     display: block;
   }
 
-  .destinationGrid {
+  .destinationGrid,
+  .aboutCards {
     grid-template-columns: 1fr;
   }
 }
