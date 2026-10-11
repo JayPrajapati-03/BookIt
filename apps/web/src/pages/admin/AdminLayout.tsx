@@ -22,16 +22,19 @@ const NAV = [
 ];
 
 export const AdminLayout: React.FC = () => {
-  const { user } = useAppSelector((s) => s.auth);
+  const { user, isLoading } = useAppSelector((s) => s.auth);
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
+    if (isLoading) return;
     if (!user || !['staff', 'admin'].includes(user.role)) {
       navigate('/');
     }
-  }, [user]);
+  }, [isLoading, navigate, user]);
+
+  if (isLoading) return null;
 
   return (
     <div className={styles.shell}>

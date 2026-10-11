@@ -6,14 +6,21 @@ import { AppError } from '../utils/errors.js';
 import { User } from '../models/User.js';
 
 export class AuthController {
+  private static readonly refreshCookiePath = '/';
+
   private static setRefreshCookie(res: Response, refreshToken: string) {
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: env.NODE_ENV === 'production',
       sameSite: 'lax',
-      path: '/api/v1/auth',
+      path: AuthController.refreshCookiePath,
       maxAge: 14 * 24 * 60 * 60 * 1000,
     });
+  }
+
+  private static clearRefreshCookie(res: Response) {
+    res.clearCookie('refreshToken', { path: AuthController.refreshCookiePath });
+    res.clearCookie('refreshToken', { path: '/api/v1/auth' });
   }
 
   static async register(req: Request, res: Response, next: NextFunction) {
@@ -112,7 +119,7 @@ export class AuthController {
       if (refreshToken) {
         await AuthService.logout(refreshToken);
       }
-      res.clearCookie('refreshToken', { path: '/api/v1/auth' });
+      AuthController.clearRefreshCookie(res);
       res.status(200).json({ data: { message: 'Logged out successfully' } });
     } catch (err) {
       next(err);
@@ -123,7 +130,7 @@ export class AuthController {
     try {
       if (!req.user) throw AppError.unauthorized();
       await AuthService.logoutAll(req.user.id);
-      res.clearCookie('refreshToken', { path: '/api/v1/auth' });
+      AuthController.clearRefreshCookie(res);
       res.status(200).json({ data: { message: 'Logged out from all sessions' } });
     } catch (err) {
       next(err);
