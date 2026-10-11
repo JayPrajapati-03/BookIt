@@ -8,7 +8,7 @@ import { apiClient } from '../../services/api.js';
 import { useAppDispatch } from '../../store/hooks.js';
 import { setCredentials } from '../../store/slices/authSlice.js';
 import { toast } from 'sonner';
-import { Shield, User, UserCheck, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import styles from './LoginPage.module.css';
 
 export const LoginPage: React.FC = () => {
@@ -20,7 +20,6 @@ export const LoginPage: React.FC = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
@@ -50,12 +49,6 @@ export const LoginPage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleDemoLogin = (email: string, role: string) => {
-    setValue('email', email);
-    setValue('password', 'Password123!');
-    toast.info(`Pre-filled credentials for ${role}`);
   };
 
   return (
@@ -96,41 +89,6 @@ export const LoginPage: React.FC = () => {
             Sign In
           </Button>
         </form>
-
-        <div className={styles.divider}>or reviewer 1-click demo</div>
-
-        <div className={styles.demoBox}>
-          <span className={styles.demoTitle}>Reviewer Demo Accounts</span>
-          <div className={styles.demoButtons}>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              leftIcon={<User size={15} />}
-              onClick={() => handleDemoLogin('demo_guest@bookit.internal', 'Guest')}
-            >
-              Continue as Guest
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              leftIcon={<UserCheck size={15} />}
-              onClick={() => handleDemoLogin('demo_staff@bookit.internal', 'Staff')}
-            >
-              Continue as Staff (Front Desk)
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              leftIcon={<Shield size={15} />}
-              onClick={() => handleDemoLogin('demo_admin@bookit.internal', 'Admin')}
-            >
-              Continue as Admin
-            </Button>
-          </div>
-        </div>
 
         <div className={styles.footerLinks}>
           Don't have an account?{' '}
