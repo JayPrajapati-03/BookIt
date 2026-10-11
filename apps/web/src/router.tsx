@@ -16,6 +16,7 @@ import { TapeChartPage } from './pages/admin/TapeChartPage.js';
 import { AdminReportsPage } from './pages/admin/AdminReportsPage.js';
 import { AdminAuditPage } from './pages/admin/AdminAuditPage.js';
 import { AdminUsersPage } from './pages/admin/AdminUsersPage.js';
+import { AdminPropertiesPage } from './pages/admin/AdminPropertiesPage.js';
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,7 @@ export const router = createBrowserRouter([
       { index: true, element: <AdminDashboardPage /> },
       { path: 'bookings', element: <AdminBookingsPage /> },
       { path: 'tape-chart', element: <TapeChartPage /> },
+      { path: 'properties', element: <AdminPropertiesPage /> },
       { path: 'reports', element: <AdminReportsPage /> },
       { path: 'audit-logs', element: <AdminAuditPage /> },
       { path: 'users', element: <AdminUsersPage /> },
