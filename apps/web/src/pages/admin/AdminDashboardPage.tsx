@@ -37,7 +37,6 @@ interface KPIs {
 
 export const AdminDashboardPage: React.FC = () => {
   const [kpis, setKpis] = useState<KPIs | null>(null);
-  const [recentActivity, setRecentActivity] = useState<any[]>([]);
   const [revenue, setRevenue] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -48,7 +47,6 @@ export const AdminDashboardPage: React.FC = () => {
         adminApi.getReports(),
       ]);
       setKpis(dashRes.data.data.kpis);
-      setRecentActivity(dashRes.data.data.recentActivity || []);
       setRevenue(reportRes.data.data.dailyRevenue || []);
     } finally {
       setIsLoading(false);
@@ -179,34 +177,6 @@ export const AdminDashboardPage: React.FC = () => {
           ) : (
             <div className={styles.noData}>No revenue data yet</div>
           )}
-        </div>
-
-        {/* Activity Feed */}
-        <div className={styles.chartCard}>
-          <h3 className={styles.chartTitle}>Recent Activity</h3>
-          <div className={styles.activityFeed}>
-            {recentActivity.length === 0 ? (
-              <p className={styles.noData}>No recent activity</p>
-            ) : (
-              recentActivity.map((log, i) => (
-                <div key={i} className={styles.activityItem}>
-                  <div className={styles.activityDot} />
-                  <div className={styles.activityContent}>
-                    <p className={styles.activityAction}>{log.action}</p>
-                    <p className={styles.activityUser}>{log.actor?.name || log.actor?.email || 'System'}</p>
-                  </div>
-                  <span className={styles.activityTime}>
-                    {log.at
-                      ? new Date(log.at).toLocaleTimeString('en-IN', {
-                          hour: '2-digit',
-                          minute: '2-digit',
-                        })
-                      : '—'}
-                  </span>
-                </div>
-              ))
-            )}
-          </div>
         </div>
       </div>
     </div>

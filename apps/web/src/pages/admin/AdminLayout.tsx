@@ -8,10 +8,6 @@ import {
   Users,
   BarChart3,
   ShieldCheck,
-  Settings,
-  Menu,
-  X,
-  LogOut,
 } from 'lucide-react';
 import styles from './AdminLayout.module.css';
 
@@ -50,7 +46,7 @@ export const AdminLayout: React.FC = () => {
             onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-label="Toggle sidebar"
           >
-            {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
+            <span aria-hidden="true">≡</span>
           </button>
         </div>
 

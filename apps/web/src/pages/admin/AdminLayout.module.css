@@ -19,9 +19,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   padding: 20px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.collapsed .sidebarHeader {
+  justify-content: center;
+  padding-inline: 10px;
+}
+
 .logo {
   font-size: 1.2rem;
   font-weight: 800;
@@ -31,16 +38,33 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.collapsed .logo {
+  display: none;
+}
+
 .toggleBtn {
-  background: none;
-  border: none;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
-  padding: 4px;
   border-radius: var(--radius-sm);
   transition: color var(--duration-fast);
   flex-shrink: 0;
 }
+
+.toggleBtn span {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
 .toggleBtn:hover {
   color: white;
 }
@@ -64,6 +88,17 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.navItem svg {
+  flex: 0 0 auto;
+}
+
+.collapsed .navItem {
+  justify-content: center;
+  gap: 0;
+  padding-inline: 0;
+}
+
 .navItem:hover {
   background: rgba(255, 255, 255, 0.08);
   color: white;
@@ -76,6 +111,11 @@
 .sidebarFooter {
   padding: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.collapsed .sidebarFooter {
+  padding: 0;
+  border-top: 0;
 }
 .userInfo {
   display: flex;
