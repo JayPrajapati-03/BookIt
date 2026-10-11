@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, ShieldCheck, Heart } from 'lucide-react';
+import { Heart, Mail, Phone, ShieldCheck } from 'lucide-react';
 import styles from './AppFooter.module.css';
 
 export const AppFooter: React.FC = () => {
@@ -115,6 +115,37 @@ export const AppFooter: React.FC = () => {
                 <a href="#trust">Safe Booking Guarantee</a>
               </li>
             </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div id="contact" className={styles.contactCol}>
+            <h4 className={styles.colTitle}>Contact Us</h4>
+            <p className={styles.contactCopy}>
+              Questions before booking? Reach the right desk.
+            </p>
+            <div className={styles.footerContactList}>
+              <a
+                href="mailto:support@bookit.example?subject=Booking%20support"
+                className={styles.footerContactItem}
+              >
+                <Mail size={15} />
+                Booking support
+              </a>
+              <a
+                href="mailto:partners@bookit.example?subject=List%20my%20property"
+                className={styles.footerContactItem}
+              >
+                <Mail size={15} />
+                List your property
+              </a>
+              <a
+                href="mailto:hello@bookit.example?subject=General%20enquiry"
+                className={styles.footerContactItem}
+              >
+                <Mail size={15} />
+                General enquiry
+              </a>
+            </div>
           </div>
         </div>
 

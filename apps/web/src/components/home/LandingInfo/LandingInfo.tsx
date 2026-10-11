@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import styles from './LandingInfo.module.css';
 
 const DESTINATIONS = [
@@ -42,7 +42,7 @@ const DESTINATIONS = [
 ];
 
 type LandingInfoProps = {
-  variant: 'destinations' | 'about' | 'contact';
+  variant: 'destinations' | 'about';
 };
 
 export const LandingInfo: React.FC<LandingInfoProps> = ({ variant }) => {
@@ -98,32 +98,5 @@ export const LandingInfo: React.FC<LandingInfoProps> = ({ variant }) => {
       </section>
     );
   }
-
-  return (
-    <section id="contact" className={styles.section}>
-      <div className={`${styles.inner} ${styles.contactGrid}`}>
-        <div>
-          <span className={styles.eyebrow}>Contact Us</span>
-          <h2 className={styles.title}>Need help choosing the right stay?</h2>
-          <p className={styles.copy}>
-            Reach the BookIt desk for booking questions, property support, or demo access.
-          </p>
-        </div>
-        <div className={styles.contactPanel}>
-          <a href="mailto:support@bookit.example" className={styles.contactItem}>
-            <Mail size={18} />
-            support@bookit.example
-          </a>
-          <a href="tel:+919999999999" className={styles.contactItem}>
-            <Phone size={18} />
-            +91 99999 99999
-          </a>
-          <span className={styles.contactItem}>
-            <MapPin size={18} />
-            India-wide boutique stays
-          </span>
-        </div>
-      </div>
-    </section>
-  );
+  return null;
 };

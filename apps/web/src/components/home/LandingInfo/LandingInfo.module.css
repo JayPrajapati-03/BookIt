@@ -133,8 +133,7 @@
   background: var(--color-sand);
 }
 
-.aboutGrid,
-.contactGrid {
+.aboutGrid {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 48px;
@@ -148,35 +147,13 @@
   margin: 0;
 }
 
-.contactPanel {
-  display: grid;
-  gap: 12px;
-}
-
-.contactItem {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--color-lagoon);
-  text-decoration: none;
-  border: 1px solid var(--color-stone);
-  border-radius: 8px;
-  padding: 16px 18px;
-  background: #fff;
-}
-
 @media (max-width: 820px) {
   .sectionHeader,
-  .aboutGrid,
-  .contactGrid {
+  .aboutGrid {
     display: block;
   }
 
   .destinationGrid {
     grid-template-columns: 1fr;
-  }
-
-  .contactPanel {
-    margin-top: 24px;
   }
 }

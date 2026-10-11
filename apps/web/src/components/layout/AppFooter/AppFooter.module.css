@@ -17,13 +17,14 @@
 
 .mainGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: var(--space-8, 32px);
+  grid-template-columns: minmax(260px, 1.5fr) repeat(4, minmax(120px, 0.72fr)) minmax(230px, 1.05fr);
+  gap: var(--space-7, 28px);
+  align-items: start;
 }
 
 @media (max-width: 1024px) {
   .mainGrid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -141,4 +142,38 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.contactCol {
+  scroll-margin-top: 84px;
+}
+
+.contactCopy {
+  color: #94a3b8;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  margin: 0 0 12px;
+}
+
+.footerContactList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerContactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #cbd5e1;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.footerContactItem svg {
+  color: #38bdf8;
+  flex: 0 0 auto;
+  margin-top: 2px;
 }

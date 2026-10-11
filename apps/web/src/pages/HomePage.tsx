@@ -12,7 +12,6 @@ export const HomePage: React.FC = () => {
       <FeaturedStays />
       <LandingInfo variant="about" />
       <WhyBookIt />
-      <LandingInfo variant="contact" />
     </div>
   );
 };
