@@ -12,15 +12,15 @@
 .inner {
   width: 100%;
   padding: 0 var(--space-6);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--space-5);
 }
 
 .brandGroup {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
 }
 
 .logo {
@@ -42,11 +42,17 @@
   display: inline-block;
 }
 
+.primaryNav {
+  justify-self: center;
+}
+
 .navLinks {
   display: flex;
   align-items: center;
   gap: var(--space-5);
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navLink {
@@ -65,23 +71,15 @@
   display: flex;
   align-items: center;
   gap: var(--space-4);
+  justify-content: flex-end;
 }
 
-.liveIndicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 600;
-  background-color: var(--status-success-bg);
-  color: var(--status-success);
-}
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr auto;
+  }
 
-.liveDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--status-success);
+  .primaryNav {
+    display: none;
+  }
 }

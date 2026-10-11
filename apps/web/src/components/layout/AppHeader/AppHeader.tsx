@@ -4,17 +4,23 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks.js';
 import { logout } from '../../../store/slices/authSlice.js';
 import { apiClient } from '../../../services/api.js';
 import { Button } from '../../common/Button/Button.js';
-import { LayoutDashboard, LogOut, User } from 'lucide-react';
+import { LogOut, User } from 'lucide-react';
 import styles from './AppHeader.module.css';
 
-export interface AppHeaderProps {
-  isSocketConnected?: boolean;
-}
-
-export const AppHeader: React.FC<AppHeaderProps> = ({ isSocketConnected = true }) => {
+export const AppHeader: React.FC = () => {
   const { user, isAuthenticated } = useAppSelector((s) => s.auth);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const handleSectionLink = (sectionId: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    navigate('/');
+
+    window.requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', `/#${sectionId}`);
+    });
+  };
 
   const handleLogout = async () => {
     try {
@@ -34,36 +40,58 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ isSocketConnected = true }
             BookIt
             <span className={styles.logoDot} />
           </Link>
-
-          <nav>
-            <ul className={styles.navLinks}>
-              <li>
-                <Link to="/search" className={styles.navLink}>
-                  Explore Stays
-                </Link>
-              </li>
-              {(user?.role === 'staff' || user?.role === 'admin') && (
-                <li>
-                  <Link to="/admin" className={styles.navLink}>
-                    Front Desk
-                  </Link>
-                </li>
-              )}
-            </ul>
-          </nav>
         </div>
 
-        <div className={styles.actionsGroup}>
-          <div
-            className={styles.liveIndicator}
-            title={isSocketConnected ? 'Real-time WebSocket connected' : 'Connecting…'}
-          >
-            <span
-              className={`${styles.liveDot} ${isSocketConnected ? styles.connected : styles.reconnecting}`}
-            />
-            <span>{isSocketConnected ? 'Live' : 'Connecting…'}</span>
-          </div>
+        <nav className={styles.primaryNav} aria-label="Primary navigation">
+          <ul className={styles.navLinks}>
+            <li>
+              <Link to="/#stays" className={styles.navLink} onClick={handleSectionLink('stays')}>
+                Stays
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/#destinations"
+                className={styles.navLink}
+                onClick={handleSectionLink('destinations')}
+              >
+                Destinations
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/#featured-stays"
+                className={styles.navLink}
+                onClick={handleSectionLink('featured-stays')}
+              >
+                Featured
+              </Link>
+            </li>
+            <li>
+              <Link to="/#about" className={styles.navLink} onClick={handleSectionLink('about')}>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/#contact"
+                className={styles.navLink}
+                onClick={handleSectionLink('contact')}
+              >
+                Contact
+              </Link>
+            </li>
+            {(user?.role === 'staff' || user?.role === 'admin') && (
+              <li>
+                <Link to="/admin" className={styles.navLink}>
+                  Front Desk
+                </Link>
+              </li>
+            )}
+          </ul>
+        </nav>
 
+        <div className={styles.actionsGroup}>
           {isAuthenticated && user ? (
             <>
               <Link to="/dashboard">

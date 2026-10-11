@@ -35,7 +35,7 @@ const FEATURES = [
 
 export const WhyBookIt: React.FC = () => {
   return (
-    <section className={styles.section}>
+    <section id="why-bookit" className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.header}>
           <h2 className={styles.title}>Why BookIt?</h2>

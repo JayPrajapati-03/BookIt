@@ -113,7 +113,7 @@ export const HeroSearch: React.FC = () => {
   const heroImage = getHeroImage(destination);
 
   return (
-    <section className={styles.hero}>
+    <section id="stays" className={styles.hero}>
       {/* Background Image with overlay */}
       <div className={styles.bg}>
         <img src={heroImage.src} alt={heroImage.alt} className={styles.bgImg} />
@@ -122,12 +122,6 @@ export const HeroSearch: React.FC = () => {
 
       {/* Content */}
       <div className={styles.content}>
-        {/* Badge */}
-        <div className={styles.badge}>
-          <span className={styles.liveDot} />
-          Real-time availability
-        </div>
-
         <h1 className={styles.headline}>
           Stay in India's Most
           <br />

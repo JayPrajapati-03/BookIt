@@ -49,7 +49,7 @@ export const FeaturedStays: React.FC = () => {
   };
 
   return (
-    <section className={styles.section}>
+    <section id="featured-stays" className={styles.section}>
       <div className={styles.inner}>
         {/* Section Header */}
         <div className={styles.header}>
