@@ -118,7 +118,7 @@ export const AppHeader: React.FC = () => {
               </Link>
               <Link to="/register">
                 <Button id="header-register-btn" variant="primary" size="sm">
-                  Join
+                  Create Account
                 </Button>
               </Link>
             </>
