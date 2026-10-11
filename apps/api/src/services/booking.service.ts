@@ -108,81 +108,96 @@ export class BookingService {
     const stayDates = getStayDates(checkIn, checkOut);
 
     // Find available room + create booking atomically in a transaction
-    const session = await mongoose.startSession();
-    let booking: IBooking;
+    // Retry loop handles TransientTransactionError (WriteConflict) from concurrent requests
+    const MAX_RETRIES = 3;
+    let booking: IBooking | undefined;
 
-    try {
-      session.startTransaction();
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      const session = await mongoose.startSession();
+      try {
+        session.startTransaction();
 
-      const roomId = await findAvailableRoom(params.roomTypeId, checkIn, checkOut);
-      if (!roomId) {
-        await session.abortTransaction();
-        throw new AppError('No rooms available for selected dates', 'CONFLICT', 409);
-      }
+        const roomId = await findAvailableRoom(params.roomTypeId, checkIn, checkOut);
+        if (!roomId) {
+          await session.abortTransaction();
+          throw new AppError('No rooms available for selected dates', 'SOLD_OUT', 409);
+        }
 
-      // Create booking
-      const reference = generateReference();
-      const holdExpiresAt = addHours(new Date(), HOLD_DURATION_MINUTES / 60);
+        // Create booking
+        const reference = generateReference();
+        const holdExpiresAt = addHours(new Date(), HOLD_DURATION_MINUTES / 60);
 
-      [booking] = await Booking.create(
-        [
-          {
-            reference,
-            hotel: roomType.hotel,
-            roomType: params.roomTypeId,
-            room: roomId,
-            guest: params.guestId,
-            guestDetails: guestDetails || params.guestDetails,
-            checkIn,
-            checkOut,
-            nights,
-            adults: params.adults,
-            children: params.children || 0,
-            totalPricePaise,
-            policySnapshot: {
-              freeCancellationHours: hotel.policies.freeCancellationHours,
-              lateCancellationPenaltyPercent: hotel.policies.lateCancellationPenaltyPercent,
-              checkInTime: hotel.policies.checkInTime,
-              checkOutTime: hotel.policies.checkOutTime,
+        [booking] = await Booking.create(
+          [
+            {
+              reference,
+              hotel: roomType.hotel,
+              roomType: params.roomTypeId,
+              room: roomId,
+              guest: params.guestId,
+              guestDetails: guestDetails || params.guestDetails,
+              checkIn,
+              checkOut,
+              nights,
+              adults: params.adults,
+              children: params.children || 0,
+              totalPricePaise,
+              policySnapshot: {
+                freeCancellationHours: hotel.policies.freeCancellationHours,
+                lateCancellationPenaltyPercent: hotel.policies.lateCancellationPenaltyPercent,
+                checkInTime: hotel.policies.checkInTime,
+                checkOutTime: hotel.policies.checkOutTime,
+              },
+              status: 'hold',
+              idempotencyKey: params.idempotencyKey,
+              holdExpiresAt,
+              isWalkIn: params.isWalkIn || false,
+              createdBy: params.createdBy,
             },
-            status: 'hold',
-            idempotencyKey: params.idempotencyKey,
-            holdExpiresAt,
-            isWalkIn: params.isWalkIn || false,
-            createdBy: params.createdBy,
-          },
-        ],
-        { session },
-      );
-
-      // Insert room nights — will throw duplicate key error on race condition
-      const roomNights = stayDates.map((date) => ({
-        hotel: roomType.hotel,
-        roomType: params.roomTypeId,
-        room: roomId,
-        date,
-        booking: booking._id,
-        status: 'occupied',
-      }));
-      await RoomNight.insertMany(roomNights, { session });
-
-      await session.commitTransaction();
-    } catch (err: any) {
-      await session.abortTransaction();
-      if (
-        err.code === 11000 ||
-        err.code === 112 ||
-        (typeof err.hasErrorLabel === 'function' && err.hasErrorLabel('TransientTransactionError'))
-      ) {
-        throw new AppError(
-          'Room no longer available — please select different dates',
-          'SOLD_OUT',
-          409,
+          ],
+          { session },
         );
+
+        // Insert room nights — will throw duplicate key error on race condition
+        const roomNights = stayDates.map((date) => ({
+          hotel: roomType.hotel,
+          roomType: params.roomTypeId,
+          room: roomId,
+          date,
+          booking: booking!._id,
+          status: 'occupied',
+        }));
+        await RoomNight.insertMany(roomNights, { session });
+
+        await session.commitTransaction();
+        session.endSession();
+        break; // success — exit retry loop
+      } catch (err: any) {
+        await session.abortTransaction();
+        session.endSession();
+
+        const isTransient =
+          err.code === 112 ||
+          (typeof err.hasErrorLabel === 'function' &&
+            err.hasErrorLabel('TransientTransactionError'));
+
+        const isDuplicateKey = err.code === 11000;
+
+        if (isDuplicateKey || isTransient) {
+          if (attempt < MAX_RETRIES) {
+            // Wait briefly before retrying (exponential-ish backoff)
+            await new Promise((r) => setTimeout(r, attempt * 50));
+            continue;
+          }
+          // All retries exhausted — room is taken
+          throw new AppError(
+            'Room no longer available — please select different dates',
+            'SOLD_OUT',
+            409,
+          );
+        }
+        throw err;
       }
-      throw err;
-    } finally {
-      session.endSession();
     }
 
     return booking!;
