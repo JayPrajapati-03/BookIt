@@ -4,28 +4,30 @@
 
 BookIt avoids generic SaaS colors and neon washes in favor of earthy, deep-toned boutique hospitality colors:
 
-| Token Name | Hex Code | Role |
-|---|---|---|
-| **Chalk** | `#F5F7F6` | Cool off-white primary canvas, background wash, airy negative space |
-| **Lagoon** | `#0F2B2E` | Deep teal-ink primary text, high-contrast dark surfaces, header ink |
-| **Tide** | `#1F6F78` | Oceanic secondary ink, links, active tab indicator, selected calendar dates |
-| **Marigold** | `#F2B33D` | Warm golden accent, key action badges, star rating highlight |
-| **Signal** | `#D9482B` | Terracotta cinnabar alert, "2 rooms left" scarcity indicator, destructive actions |
-| **Stone** | `#D6DCD9` | Hairline borders, subtle dividers, muted structural outlines |
-| **Sand** | `#EBEFEA` | Secondary component background, input fill, pill active tint |
+| Token Name   | Hex Code  | Role                                                                              |
+| ------------ | --------- | --------------------------------------------------------------------------------- |
+| **Chalk**    | `#F5F7F6` | Cool off-white primary canvas, background wash, airy negative space               |
+| **Lagoon**   | `#0F2B2E` | Deep teal-ink primary text, high-contrast dark surfaces, header ink               |
+| **Tide**     | `#1F6F78` | Oceanic secondary ink, links, active tab indicator, selected calendar dates       |
+| **Marigold** | `#F2B33D` | Warm golden accent, key action badges, star rating highlight                      |
+| **Signal**   | `#D9482B` | Terracotta cinnabar alert, "2 rooms left" scarcity indicator, destructive actions |
+| **Stone**    | `#D6DCD9` | Hairline borders, subtle dividers, muted structural outlines                      |
+| **Sand**     | `#EBEFEA` | Secondary component background, input fill, pill active tint                      |
 
-*(Dark surfaces in admin invert into Lagoon `#0F2B2E` backdrop with Stone `#D6DCD9` structural hairlines and Chalk `#F5F7F6` text).*
+_(Dark surfaces in admin invert into Lagoon `#0F2B2E` backdrop with Stone `#D6DCD9` structural hairlines and Chalk `#F5F7F6` text)._
 
 ---
 
 ## 2. Typography & Hierarchy
 
 ### Typefaces
+
 - **Primary / UI / Headings:** `Bricolage Grotesque` (variable weight, humanistic editorial character, compact numerals, sharp punctuation).
 - **Long-Form / Editorial / Reviews:** `Newsreader` (transitional serif, optical sizing, elegant reading rhythm for property stories and policies).
 - **Tabular Figures:** Applied systematically with `font-variant-numeric: tabular-nums` for room rates, dates, counters, and tape-chart grids.
 
 ### Type Scale
+
 - `display`: `2.75rem` (44px) / `1.1` line-height / Weight: 700 / Tracking: -0.02em
 - `h1`: `2.00rem` (32px) / `1.2` line-height / Weight: 600 / Tracking: -0.015em
 - `h2`: `1.50rem` (24px) / `1.25` line-height / Weight: 600 / Tracking: -0.01em
@@ -40,6 +42,7 @@ BookIt avoids generic SaaS colors and neon washes in favor of earthy, deep-toned
 ## 3. Layout Concept & Wireframes
 
 ### Architectural Alignment Rules
+
 - **Grid:** 12-column responsive fluid grid with max-width `1280px` on desktop; `24px` gutter (`16px` on mobile).
 - **Hairlines:** Thin `1px solid var(--color-stone)` borders rather than floating drop-shadowed card boxes.
 - **Radius:** Restrained `6px` on inputs and buttons, `8px` on dialogs and popovers. Zero radius on architectural photography for an authentic gallery aesthetic.
@@ -47,7 +50,9 @@ BookIt avoids generic SaaS colors and neon washes in favor of earthy, deep-toned
 ### Key Screen Layouts & Wireframes
 
 #### Screen A: Home (`/`)
-*Concept:* The hero IS the interactive sentence search, immediately above the real-time "Open tonight" showcase.
+
+_Concept:_ The hero IS the interactive sentence search, immediately above the real-time "Open tonight" showcase.
+
 ```text
 +-----------------------------------------------------------------------+
 |  [Logo: BookIt]          Udaipur  *  Goa  *  Kerala       [My Bookings] [Login] |
@@ -68,7 +73,9 @@ BookIt avoids generic SaaS colors and neon washes in favor of earthy, deep-toned
 ```
 
 #### Screen B: Property Detail (`/hotels/:slug`)
-*Concept:* Asymmetric photo mosaic, live "N left" room tiers, interactive calendar, sticky quote & hold drawer.
+
+_Concept:_ Asymmetric photo mosaic, live "N left" room tiers, interactive calendar, sticky quote & hold drawer.
+
 ```text
 +-----------------------------------------------------------------------+
 |  <- All Stays  |  Fateh Garh - Udaipur, Rajasthan        [Save] [Share] |
@@ -92,7 +99,9 @@ BookIt avoids generic SaaS colors and neon washes in favor of earthy, deep-toned
 ```
 
 #### Screen C: Admin Tape Chart (`/admin/tape-chart`)
-*Concept:* Utilitarian multi-room front-desk grid updating in real-time via Socket.io.
+
+_Concept:_ Utilitarian multi-room front-desk grid updating in real-time via Socket.io.
+
 ```text
 +-----------------------------------------------------------------------+
 | BookIt Admin | [Overview] [Tape Chart] [Bookings] [Rooms] [Audit]     |
@@ -120,12 +129,12 @@ BookIt avoids generic SaaS colors and neon washes in favor of earthy, deep-toned
 
 ## 5. Review Against "Defaults to Avoid" (A8 Compliance)
 
-| Default to Avoid | How BookIt Avoids It & What Was Chosen Instead |
-|---|---|
-| **Purple/blue gradient washes & neon glows** | Strict natural palette: Chalk `#F5F7F6`, deep Lagoon ink `#0F2B2E`, Tide `#1F6F78`, warm Marigold `#F2B33D`. No linear gradients. |
-| **Identical soft-shadow rounded cards** | Structured hairline Stone borders (`1px solid #D6DCD9`), sharp architectural photos with `0px` radius, crisp `6px` controls. |
-| **Centered hero with generic marketing slogans** | Replaced entirely with the **Sentence Search** engine: an inline, keyboard-accessible sentence form that controls instant live queries. |
-| **Numbered 01/02/03 badges & arrows on every link** | Clean semantic hierarchy, plain active action verbs ("Search stays", "Hold room", "Review policies"). |
-| **Emojis as icons & mixed icon sets** | Unified Lucide icon system with standard 1.75px stroke width throughout. Zero emojis in the UI. |
-| **Stock shadcn/Tailwind look** | Built with custom CSS Modules and native design tokens (`tokens.css`). No default Tailwind zinc/slate styles. |
-| **Fake social proof & invented counts** | Strictly banned. Viewers counter only displays when 2+ real connected sockets inhabit the hotel room; scarcity comes from Mongo `RoomNight` index counts. |
+| Default to Avoid                                    | How BookIt Avoids It & What Was Chosen Instead                                                                                                            |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Purple/blue gradient washes & neon glows**        | Strict natural palette: Chalk `#F5F7F6`, deep Lagoon ink `#0F2B2E`, Tide `#1F6F78`, warm Marigold `#F2B33D`. No linear gradients.                         |
+| **Identical soft-shadow rounded cards**             | Structured hairline Stone borders (`1px solid #D6DCD9`), sharp architectural photos with `0px` radius, crisp `6px` controls.                              |
+| **Centered hero with generic marketing slogans**    | Replaced entirely with the **Sentence Search** engine: an inline, keyboard-accessible sentence form that controls instant live queries.                   |
+| **Numbered 01/02/03 badges & arrows on every link** | Clean semantic hierarchy, plain active action verbs ("Search stays", "Hold room", "Review policies").                                                     |
+| **Emojis as icons & mixed icon sets**               | Unified Lucide icon system with standard 1.75px stroke width throughout. Zero emojis in the UI.                                                           |
+| **Stock shadcn/Tailwind look**                      | Built with custom CSS Modules and native design tokens (`tokens.css`). No default Tailwind zinc/slate styles.                                             |
+| **Fake social proof & invented counts**             | Strictly banned. Viewers counter only displays when 2+ real connected sockets inhabit the hotel room; scarcity comes from Mongo `RoomNight` index counts. |

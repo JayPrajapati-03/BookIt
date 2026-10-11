@@ -28,9 +28,17 @@ export const ROUTE_REGISTRY: RouteDefinition[] = [
 
   // Staff routes
   { method: 'POST', path: '/api/v1/admin/walk-in', requiredPermission: 'bookings:walk_in' },
-  { method: 'PATCH', path: '/api/v1/admin/bookings/test-id/status', requiredPermission: 'bookings:update:status' },
+  {
+    method: 'PATCH',
+    path: '/api/v1/admin/bookings/test-id/status',
+    requiredPermission: 'bookings:update:status',
+  },
   { method: 'POST', path: '/api/v1/admin/blocks', requiredPermission: 'blocks:manage' },
-  { method: 'POST', path: '/api/v1/admin/reviews/test-id/respond', requiredPermission: 'reviews:respond' },
+  {
+    method: 'POST',
+    path: '/api/v1/admin/reviews/test-id/respond',
+    requiredPermission: 'reviews:respond',
+  },
 
   // Admin-only routes
   { method: 'POST', path: '/api/v1/admin/hotels', requiredPermission: 'hotels:manage' },

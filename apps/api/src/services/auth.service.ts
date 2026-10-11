@@ -206,10 +206,7 @@ export class AuthService {
 
     // Reuse detection: If token was already revoked/replaced, revoke entire family!
     if (storedToken.revokedAt || storedToken.replacedBy) {
-      await RefreshToken.updateMany(
-        { family: storedToken.family },
-        { revokedAt: new Date() },
-      );
+      await RefreshToken.updateMany({ family: storedToken.family }, { revokedAt: new Date() });
 
       await AuditLog.create({
         actor: storedToken.user,
@@ -221,7 +218,9 @@ export class AuthService {
         at: new Date(),
       });
 
-      throw AppError.unauthorized('Refresh token reuse detected. All sessions in this family revoked.');
+      throw AppError.unauthorized(
+        'Refresh token reuse detected. All sessions in this family revoked.',
+      );
     }
 
     if (storedToken.expiresAt < new Date()) {
@@ -256,17 +255,11 @@ export class AuthService {
     const storedToken = await RefreshToken.findOne({ tokenHash });
     if (storedToken) {
       // Revoke the entire family
-      await RefreshToken.updateMany(
-        { family: storedToken.family },
-        { revokedAt: new Date() },
-      );
+      await RefreshToken.updateMany({ family: storedToken.family }, { revokedAt: new Date() });
     }
   }
 
   static async logoutAll(userId: string) {
-    await RefreshToken.updateMany(
-      { user: userId },
-      { revokedAt: new Date() },
-    );
+    await RefreshToken.updateMany({ user: userId }, { revokedAt: new Date() });
   }
 }

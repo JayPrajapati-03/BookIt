@@ -15,14 +15,12 @@ export const hotelSearchQuerySchema = z
       .optional(),
     adults: z.coerce.number().int().min(1).default(1),
     children: z.coerce.number().int().min(0).default(0),
+    guests: z.coerce.number().int().min(1).optional(),
     minPrice: z.coerce.number().int().min(0).optional(),
     maxPrice: z.coerce.number().int().min(0).optional(),
     amenities: z.union([z.string().transform((val) => [val]), z.array(z.string())]).optional(),
     propertyType: z
-      .union([
-        z.enum(PROPERTY_TYPES).transform((val) => [val]),
-        z.array(z.enum(PROPERTY_TYPES)),
-      ])
+      .union([z.enum(PROPERTY_TYPES).transform((val) => [val]), z.array(z.enum(PROPERTY_TYPES))])
       .optional(),
     minRating: z.coerce.number().min(1).max(5).optional(),
     near: z

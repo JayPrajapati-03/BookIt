@@ -1,0 +1,221 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+.back {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+.back:hover {
+  color: var(--text-primary);
+}
+.reference {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--color-lagoon);
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card {
+  background: var(--bg-surface);
+  border: var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.hotelCard {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.hotelImg {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+.hotelName {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.hotelCity,
+.roomName {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.cardTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.detailItem {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.detailIcon {
+  color: var(--color-tide);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.detailLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.detailValue {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.detailSub {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.guestList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.guestRow {
+  display: flex;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+.guestRow dt {
+  min-width: 80px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.guestRow dd {
+  color: var(--text-primary);
+}
+.requests {
+  white-space: pre-wrap;
+}
+.cancelCard {
+  border-color: var(--status-danger-bg);
+  background: var(--status-danger-bg);
+}
+.refundRow {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+.penalty {
+  color: var(--status-danger);
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 88px;
+}
+.priceCard {
+  background: var(--bg-surface);
+  border: var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.priceTotal {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.priceSub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.notFound {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--text-secondary);
+}
+.notFound h2 {
+  margin: 16px 0 8px;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.dialog {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  max-width: 480px;
+  width: 90%;
+}
+.dialog h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+.dialogText {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+.reasonInput {
+  width: 100%;
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  background: var(--bg-primary);
+}
+.dialogActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}

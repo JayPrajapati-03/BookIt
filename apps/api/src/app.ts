@@ -56,6 +56,41 @@ export function createApp(): Express {
     }
   });
 
+  // Swagger Documentation & OpenAPI Spec
+  app.get('/docs/openapi.json', (_req, res) => {
+    import('path').then((path) => {
+      const openApiPath = path.resolve(process.cwd(), 'docs/openapi.json');
+      res.sendFile(openApiPath);
+    });
+  });
+
+  app.get('/docs', (_req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>BookIt API — Interactive Documentation</title>
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" />
+  <style>body { margin: 0; background: #fafafa; }</style>
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+  <script>
+    window.onload = () => {
+      SwaggerUIBundle({
+        url: '/docs/openapi.json',
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [SwaggerUIBundle.presets.apis],
+      });
+    };
+  </script>
+</body>
+</html>`);
+  });
+
   // Mount full API v1 router
   app.use('/api/v1', apiRouter);
 

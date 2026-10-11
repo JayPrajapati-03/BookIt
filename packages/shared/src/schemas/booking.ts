@@ -27,7 +27,10 @@ export const bookingConfirmSchema = z
       .object({
         name: z.string().trim().min(2, 'Name must be at least 2 characters'),
         email: z.string().trim().toLowerCase().email('Invalid email address'),
-        phone: z.string().trim().regex(/^\+?[1-9]\d{7,14}$/, 'Invalid phone number'),
+        phone: z
+          .string()
+          .trim()
+          .regex(/^\+?[1-9]\d{7,14}$/, 'Invalid phone number'),
       })
       .strict(),
     paymentMethod: z.enum(PAYMENT_METHODS),
@@ -62,7 +65,10 @@ export const walkInBookingSchema = z
       .object({
         name: z.string().trim().min(2),
         email: z.string().trim().toLowerCase().email(),
-        phone: z.string().trim().regex(/^\+?[1-9]\d{7,14}$/),
+        phone: z
+          .string()
+          .trim()
+          .regex(/^\+?[1-9]\d{7,14}$/),
       })
       .strict(),
     paymentMethod: z.enum(PAYMENT_METHODS).default('pay_at_hotel'),

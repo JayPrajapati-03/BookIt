@@ -1,6 +1,39 @@
 import { Router } from 'express';
 import { authRouter } from './auth.routes.js';
+import { hotelRouter } from './hotel.routes.js';
 import { authenticate, authorize } from '../middlewares/auth.middleware.js';
+import {
+  quoteBooking,
+  holdBooking,
+  confirmBooking,
+  cancelBooking,
+  listBookings,
+  getBooking,
+} from '../controllers/booking.controller.js';
+import { createReview, respondToReview } from '../controllers/review.controller.js';
+import { getWishlist, toggleWishlist, checkWishlist } from '../controllers/wishlist.controller.js';
+import {
+  getDashboard,
+  adminListBookings,
+  updateBookingStatus,
+  createWalkIn,
+  getTapeChart,
+  adminListUsers,
+  updateUserRole,
+  getAuditLogs,
+  getOccupancyReport,
+  adminListHotels,
+  adminCreateHotel,
+  adminUpdateHotel,
+  adminListRoomTypes,
+  adminCreateRoomType,
+  adminListPricingRules,
+  adminCreatePricingRule,
+  adminUpdatePricingRule,
+  adminDeletePricingRule,
+  createBlock,
+  updateSettings,
+} from '../controllers/admin.controller.js';
 
 const apiRouter: Router = Router();
 
@@ -8,84 +41,93 @@ apiRouter.get('/ping', (_req, res) => {
   res.json({ message: 'pong', timestamp: new Date().toISOString() });
 });
 
+// Hotels & Search (public)
+apiRouter.use('/hotels', hotelRouter);
+
+// Auth
 apiRouter.use('/auth', authRouter);
 
-// Guest / User Authenticated Routes
-apiRouter.get('/bookings', authenticate, authorize('bookings:read:own'), (_req, res) => {
-  res.json({ data: [] });
-});
+// ─── Guest / User Routes ───────────────────────────────────────────────────
+apiRouter.get('/bookings/quote', authenticate, authorize('bookings:create'), quoteBooking);
+apiRouter.post('/bookings/quote', authenticate, authorize('bookings:create'), quoteBooking);
+apiRouter.post('/bookings/hold', authenticate, authorize('bookings:create'), holdBooking);
+apiRouter.post('/bookings/:id/confirm', authenticate, authorize('bookings:create'), confirmBooking);
+apiRouter.post('/bookings/:id/cancel', authenticate, authorize('bookings:read:own'), cancelBooking);
+apiRouter.get('/bookings', authenticate, authorize('bookings:read:own'), listBookings);
+apiRouter.get('/bookings/:id', authenticate, authorize('bookings:read:own'), getBooking);
 
-apiRouter.post('/bookings/quote', authenticate, authorize('bookings:create'), (_req, res) => {
-  res.json({ data: { quote: true } });
-});
+apiRouter.post('/reviews', authenticate, authorize('reviews:create'), createReview);
 
-apiRouter.post('/bookings/hold', authenticate, authorize('bookings:create'), (_req, res) => {
-  res.json({ data: { held: true } });
-});
+apiRouter.get('/wishlist', authenticate, authorize('wishlist:manage:own'), getWishlist);
+apiRouter.post('/wishlist/toggle', authenticate, authorize('wishlist:manage:own'), toggleWishlist);
+apiRouter.get('/wishlist/check', authenticate, authorize('wishlist:manage:own'), checkWishlist);
 
-apiRouter.post('/reviews', authenticate, authorize('reviews:create'), (_req, res) => {
-  res.json({ data: { created: true } });
-});
-
-apiRouter.get('/wishlist', authenticate, authorize('wishlist:manage:own'), (_req, res) => {
-  res.json({ data: [] });
-});
-
-// Admin & Staff Routes
-apiRouter.post('/admin/walk-in', authenticate, authorize('bookings:walk_in'), (_req, res) => {
-  res.json({ data: { success: true } });
-});
-
+// ─── Staff & Admin Routes ──────────────────────────────────────────────────
+apiRouter.post('/admin/walk-in', authenticate, authorize('bookings:walk_in'), createWalkIn);
 apiRouter.patch(
   '/admin/bookings/:id/status',
   authenticate,
   authorize('bookings:update:status'),
-  (_req, res) => {
-    res.json({ data: { updated: true } });
-  },
+  updateBookingStatus,
 );
-
-apiRouter.post('/admin/blocks', authenticate, authorize('blocks:manage'), (_req, res) => {
-  res.json({ data: { blocked: true } });
-});
-
+apiRouter.post('/admin/blocks', authenticate, authorize('blocks:manage'), createBlock);
 apiRouter.post(
   '/admin/reviews/:id/respond',
   authenticate,
   authorize('reviews:respond'),
-  (_req, res) => {
-    res.json({ data: { responded: true } });
-  },
+  respondToReview,
+);
+apiRouter.get('/admin/tape-chart', authenticate, authorize('bookings:update:status'), getTapeChart);
+
+// ─── Admin-Only Routes ─────────────────────────────────────────────────────
+apiRouter.get('/admin/dashboard', authenticate, authorize('reports:read'), getDashboard);
+apiRouter.get(
+  '/admin/bookings',
+  authenticate,
+  authorize('bookings:update:status'),
+  adminListBookings,
+);
+apiRouter.get('/admin/users', authenticate, authorize('users:manage'), adminListUsers);
+apiRouter.patch('/admin/users/:id/role', authenticate, authorize('users:manage'), updateUserRole);
+apiRouter.get('/admin/audit-logs', authenticate, authorize('audit:read'), getAuditLogs);
+apiRouter.get(
+  '/admin/reports/occupancy',
+  authenticate,
+  authorize('reports:read'),
+  getOccupancyReport,
 );
 
-// Admin-Only Routes
-apiRouter.post('/admin/hotels', authenticate, authorize('hotels:manage'), (_req, res) => {
-  res.json({ data: { created: true } });
-});
+apiRouter.get('/admin/hotels', authenticate, authorize('hotels:manage'), adminListHotels);
+apiRouter.post('/admin/hotels', authenticate, authorize('hotels:manage'), adminCreateHotel);
+apiRouter.patch('/admin/hotels/:id', authenticate, authorize('hotels:manage'), adminUpdateHotel);
 
+apiRouter.get('/admin/room-types', authenticate, authorize('hotels:manage'), adminListRoomTypes);
+apiRouter.post('/admin/room-types', authenticate, authorize('hotels:manage'), adminCreateRoomType);
+
+apiRouter.get(
+  '/admin/pricing-rules',
+  authenticate,
+  authorize('pricing:manage'),
+  adminListPricingRules,
+);
 apiRouter.post(
   '/admin/pricing-rules',
   authenticate,
   authorize('pricing:manage'),
-  (_req, res) => {
-    res.json({ data: { created: true } });
-  },
+  adminCreatePricingRule,
 );
-
-apiRouter.get('/admin/audit-logs', authenticate, authorize('audit:read'), (_req, res) => {
-  res.json({ data: [] });
-});
-
-apiRouter.get('/admin/reports/occupancy', authenticate, authorize('reports:read'), (_req, res) => {
-  res.json({ data: { occupancy: 0.85 } });
-});
-
-apiRouter.patch('/admin/settings', authenticate, authorize('settings:manage'), (_req, res) => {
-  res.json({ data: { updated: true } });
-});
-
-apiRouter.get('/admin/users', authenticate, authorize('users:manage'), (_req, res) => {
-  res.json({ data: [] });
-});
+apiRouter.patch(
+  '/admin/pricing-rules/:id',
+  authenticate,
+  authorize('pricing:manage'),
+  adminUpdatePricingRule,
+);
+apiRouter.delete(
+  '/admin/pricing-rules/:id',
+  authenticate,
+  authorize('pricing:manage'),
+  adminDeletePricingRule,
+);
+apiRouter.patch('/admin/settings', authenticate, authorize('settings:manage'), updateSettings);
 
 export { apiRouter };

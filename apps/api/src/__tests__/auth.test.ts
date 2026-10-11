@@ -28,13 +28,11 @@ describe('Auth & Refresh Token Rotation with Reuse Detection', () => {
   });
 
   it('Registers a new user and issues access token + refresh cookie', async () => {
-    const res = await request(app)
-      .post('/api/v1/auth/register')
-      .send({
-        name: 'Aditi Sharma',
-        email: 'aditi@example.com',
-        password: 'Password123!',
-      });
+    const res = await request(app).post('/api/v1/auth/register').send({
+      name: 'Aditi Sharma',
+      email: 'aditi@example.com',
+      password: 'Password123!',
+    });
 
     expect(res.status).toBe(201);
     expect(res.body.data).toHaveProperty('accessToken');
@@ -48,45 +46,37 @@ describe('Auth & Refresh Token Rotation with Reuse Detection', () => {
   });
 
   it('Logs in user and rejects invalid password without account enumeration', async () => {
-    await request(app)
-      .post('/api/v1/auth/register')
-      .send({
-        name: 'Aditi Sharma',
-        email: 'aditi@example.com',
-        password: 'Password123!',
-      });
+    await request(app).post('/api/v1/auth/register').send({
+      name: 'Aditi Sharma',
+      email: 'aditi@example.com',
+      password: 'Password123!',
+    });
 
     // Wrong password
-    const failRes = await request(app)
-      .post('/api/v1/auth/login')
-      .send({
-        email: 'aditi@example.com',
-        password: 'WrongPassword!',
-      });
+    const failRes = await request(app).post('/api/v1/auth/login').send({
+      email: 'aditi@example.com',
+      password: 'WrongPassword!',
+    });
 
     expect(failRes.status).toBe(401);
     expect(failRes.body.error.message).toBe('Email or password is incorrect');
 
     // Correct password
-    const okRes = await request(app)
-      .post('/api/v1/auth/login')
-      .send({
-        email: 'aditi@example.com',
-        password: 'Password123!',
-      });
+    const okRes = await request(app).post('/api/v1/auth/login').send({
+      email: 'aditi@example.com',
+      password: 'Password123!',
+    });
 
     expect(okRes.status).toBe(200);
     expect(okRes.body.data).toHaveProperty('accessToken');
   });
 
   it('Rotates refresh token and REVOKES THE WHOLE FAMILY on reuse detection', async () => {
-    const registerRes = await request(app)
-      .post('/api/v1/auth/register')
-      .send({
-        name: 'Vikram Mehta',
-        email: 'vikram@example.com',
-        password: 'Password123!',
-      });
+    const registerRes = await request(app).post('/api/v1/auth/register').send({
+      name: 'Vikram Mehta',
+      email: 'vikram@example.com',
+      password: 'Password123!',
+    });
 
     const cookieHeader = registerRes.headers['set-cookie'][0];
     const initialToken = cookieHeader.split(';')[0].split('=')[1];

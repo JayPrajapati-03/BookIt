@@ -9,11 +9,17 @@ export const helmetMiddleware = helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com', 'https://*.tile.openstreetmap.org'],
-      connectSrc: ["'self'", env.API_URL, env.WEB_URL],
-      fontSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'https://unpkg.com'],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https://unpkg.com'],
+      imgSrc: [
+        "'self'",
+        'data:',
+        'https://res.cloudinary.com',
+        'https://*.tile.openstreetmap.org',
+        'https://unpkg.com',
+      ],
+      connectSrc: ["'self'", env.API_URL, env.WEB_URL, 'https://unpkg.com'],
+      fontSrc: ["'self'", 'https://unpkg.com'],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },

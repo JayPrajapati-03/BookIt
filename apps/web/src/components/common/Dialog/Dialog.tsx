@@ -10,13 +10,7 @@ export interface DialogProps {
   footer?: React.ReactNode;
 }
 
-export const Dialog: React.FC<DialogProps> = ({
-  isOpen,
-  onClose,
-  title,
-  children,
-  footer,
-}) => {
+export const Dialog: React.FC<DialogProps> = ({ isOpen, onClose, title, children, footer }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

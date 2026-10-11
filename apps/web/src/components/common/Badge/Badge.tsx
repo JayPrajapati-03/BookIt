@@ -8,12 +8,7 @@ export interface BadgeProps {
   className?: string;
 }
 
-export const Badge: React.FC<BadgeProps> = ({
-  children,
-  variant = 'neutral',
-  icon,
-  className,
-}) => {
+export const Badge: React.FC<BadgeProps> = ({ children, variant = 'neutral', icon, className }) => {
   return (
     <span className={`${styles.badge} ${styles[variant]} ${className || ''}`}>
       {icon && <span aria-hidden="true">{icon}</span>}

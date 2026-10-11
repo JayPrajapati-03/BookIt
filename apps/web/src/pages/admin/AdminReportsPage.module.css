@@ -1,0 +1,151 @@
+.page {
+  padding: 32px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.dateFilters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+.dateInput {
+  margin-left: 6px;
+  padding: 6px 10px;
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+}
+.applyBtn {
+  padding: 7px 16px;
+  background: var(--color-tide);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: var(--text-muted);
+}
+.summaryRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.summaryCard {
+  background: var(--bg-surface);
+  border: var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+}
+.summaryValue {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.summaryLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.chartCard {
+  background: var(--bg-surface);
+  border: var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.chartTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.topHotels {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hotelRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: var(--border-hairline);
+}
+.hotelRow:last-child {
+  border-bottom: none;
+}
+.hotelRank {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+.hotelInfo {
+  flex: 1;
+  min-width: 0;
+}
+.hotelName {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hotelCity {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.hotelStats {
+  text-align: right;
+}
+.hotelRevenue {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.hotelCount {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.noData {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 32px;
+}

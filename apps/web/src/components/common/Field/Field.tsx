@@ -6,14 +6,17 @@ export interface FieldProps extends React.InputHTMLAttributes<HTMLInputElement> 
   error?: string;
   hint?: string;
   required?: boolean;
+  rightSlot?: React.ReactNode;
 }
 
 export const Field = React.forwardRef<HTMLInputElement, FieldProps>(
-  ({ label, error, hint, required, id, className, disabled, ...props }, ref) => {
+  ({ label, error, hint, required, id, className, disabled, rightSlot, ...props }, ref) => {
     const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
     return (
-      <div className={`${styles.fieldContainer} ${error ? styles.hasError : ''} ${className || ''}`}>
+      <div
+        className={`${styles.fieldContainer} ${error ? styles.hasError : ''} ${className || ''}`}
+      >
         {label && (
           <div className={styles.labelWrapper}>
             <label htmlFor={inputId} className={styles.label}>
@@ -23,15 +26,18 @@ export const Field = React.forwardRef<HTMLInputElement, FieldProps>(
             {hint && !error && <span className={styles.hint}>{hint}</span>}
           </div>
         )}
-        <input
-          id={inputId}
-          ref={ref}
-          disabled={disabled}
-          aria-invalid={!!error}
-          aria-describedby={error ? `${inputId}-error` : undefined}
-          className={styles.inputControl}
-          {...props}
-        />
+        <div className={styles.inputWrapper}>
+          <input
+            id={inputId}
+            ref={ref}
+            disabled={disabled}
+            aria-invalid={!!error}
+            aria-describedby={error ? `${inputId}-error` : undefined}
+            className={`${styles.inputControl} ${rightSlot ? styles.hasRightSlot : ''}`}
+            {...props}
+          />
+          {rightSlot && <div className={styles.rightSlot}>{rightSlot}</div>}
+        </div>
         {error && (
           <span id={`${inputId}-error`} className={styles.errorMessage} role="alert">
             {error}

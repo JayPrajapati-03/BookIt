@@ -4,12 +4,7 @@ import { ERROR_CODES, type ApiErrorEnvelope } from '@bookit/shared';
 import { AppError } from '../utils/errors.js';
 import { logger } from '../utils/logger.js';
 
-export function errorHandler(
-  err: unknown,
-  req: Request,
-  res: Response,
-  _next: NextFunction,
-): void {
+export function errorHandler(err: unknown, req: Request, res: Response, _next: NextFunction): void {
   const requestId = req.id || 'unknown';
 
   if (err instanceof AppError) {

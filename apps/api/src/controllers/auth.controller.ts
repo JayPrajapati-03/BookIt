@@ -52,11 +52,7 @@ export class AuthController {
       const ip = req.ip || req.socket.remoteAddress;
       const userAgent = req.get('user-agent');
 
-      const { user, accessToken, refreshToken } = await AuthService.login(
-        validated,
-        ip,
-        userAgent,
-      );
+      const { user, accessToken, refreshToken } = await AuthService.login(validated, ip, userAgent);
 
       AuthController.setRefreshCookie(res, refreshToken);
 
@@ -86,8 +82,11 @@ export class AuthController {
       const ip = req.ip || req.socket.remoteAddress;
       const userAgent = req.get('user-agent');
 
-      const { user, accessToken, refreshToken: newRefreshToken } =
-        await AuthService.rotateRefreshToken(refreshToken, ip, userAgent);
+      const {
+        user,
+        accessToken,
+        refreshToken: newRefreshToken,
+      } = await AuthService.rotateRefreshToken(refreshToken, ip, userAgent);
 
       AuthController.setRefreshCookie(res, newRefreshToken);
 

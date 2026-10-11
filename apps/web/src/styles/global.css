@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
 @import './tokens.css';
 
 *,
@@ -53,14 +54,21 @@ body {
 }
 
 /* Architectural typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-sans);
   color: var(--text-primary);
   font-weight: 600;
   line-height: 1.25;
 }
 
-p, li, blockquote {
+p,
+li,
+blockquote {
   color: var(--text-secondary);
 }
 
@@ -68,7 +76,10 @@ p, li, blockquote {
   font-family: var(--font-serif);
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
 }

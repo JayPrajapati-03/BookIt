@@ -10,13 +10,7 @@ export interface DrawerProps {
   footer?: React.ReactNode;
 }
 
-export const Drawer: React.FC<DrawerProps> = ({
-  isOpen,
-  onClose,
-  title,
-  children,
-  footer,
-}) => {
+export const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, title, children, footer }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();

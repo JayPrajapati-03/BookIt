@@ -1,0 +1,202 @@
+{
+  "info": {
+    "name": "BookIt API Collection",
+    "description": "Production Postman Collection for BookIt Boutique Hotel Booking Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Liveness Probe (/healthz)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/healthz"
+          }
+        },
+        {
+          "name": "Readiness Probe (/readyz)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/readyz"
+          }
+        },
+        {
+          "name": "API Ping",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ping"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login Demo Guest",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.data && res.data.accessToken) {",
+                  "    pm.collectionVariables.set('accessToken', res.data.accessToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo_guest@bookit.internal\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Login Demo Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.data && res.data.accessToken) {",
+                  "    pm.collectionVariables.set('accessToken', res.data.accessToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo_admin@bookit.internal\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Get Current User Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/auth/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hotels & Search",
+      "item": [
+        {
+          "name": "Search Hotels",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hotels?city=Udaipur&limit=10"
+          }
+        },
+        {
+          "name": "Autosuggest Query",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hotels/suggest?q=palace"
+          }
+        },
+        {
+          "name": "Get Hotel By Slug",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hotels/the-oberoi-udaivilas"
+          }
+        },
+        {
+          "name": "Get Hotel Availability Calendar",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hotels/the-oberoi-udaivilas/calendar?month=2026-11"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Calculate Price Quote",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomTypeId\": \"<ROOM_TYPE_ID>\",\n  \"checkIn\": \"2026-11-15\",\n  \"checkOut\": \"2026-11-17\",\n  \"adults\": 2\n}"
+            },
+            "url": "{{baseUrl}}/bookings/quote"
+          }
+        },
+        {
+          "name": "Place Booking Hold",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Idempotency-Key", "value": "pm-test-key-1" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomTypeId\": \"<ROOM_TYPE_ID>\",\n  \"checkIn\": \"2026-11-15\",\n  \"checkOut\": \"2026-11-17\",\n  \"adults\": 2,\n  \"children\": 0,\n  \"idempotencyKey\": \"pm-test-key-1\"\n}"
+            },
+            "url": "{{baseUrl}}/bookings/hold"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Operations",
+      "item": [
+        {
+          "name": "Admin Dashboard Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/admin/dashboard"
+          }
+        },
+        {
+          "name": "Front Desk Tape Chart",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/admin/tape-chart?days=14"
+          }
+        }
+      ]
+    }
+  ]
+}

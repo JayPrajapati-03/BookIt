@@ -1,0 +1,301 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "BookIt API",
+    "description": "Real-Time Boutique Hotel Booking Platform API Documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api/v1",
+      "description": "API v1 base URL"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "ApiErrorEnvelope": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": { "type": "string" },
+              "message": { "type": "string" },
+              "requestId": { "type": "string" },
+              "details": { "type": "object", "nullable": true }
+            },
+            "required": ["code", "message", "requestId"]
+          }
+        }
+      },
+      "Hotel": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "tagline": { "type": "string" },
+          "city": { "type": "string" },
+          "starRating": { "type": "number" },
+          "fromPricePaise": { "type": "number" }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new guest account",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "email": { "type": "string", "format": "email" },
+                  "password": { "type": "string", "minLength": 8 }
+                },
+                "required": ["name", "email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Account created" },
+          "400": { "description": "Validation error" },
+          "409": { "description": "Email already exists" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Authenticate user with email and password",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string", "format": "email" },
+                  "password": { "type": "string" }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Authenticated successfully" },
+          "401": { "description": "Invalid credentials" }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Get authenticated user profile",
+        "tags": ["Auth"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Profile data" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    },
+    "/hotels": {
+      "get": {
+        "summary": "Search boutique hotels with filters and facets",
+        "tags": ["Hotels"],
+        "parameters": [
+          { "name": "city", "in": "query", "schema": { "type": "string" } },
+          { "name": "checkIn", "in": "query", "schema": { "type": "string" } },
+          { "name": "checkOut", "in": "query", "schema": { "type": "string" } },
+          { "name": "adults", "in": "query", "schema": { "type": "integer" } },
+          { "name": "limit", "in": "query", "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Hotel search results with facets" }
+        }
+      }
+    },
+    "/hotels/suggest": {
+      "get": {
+        "summary": "Typeahead autosuggest for cities and hotel names",
+        "tags": ["Hotels"],
+        "parameters": [
+          { "name": "q", "in": "query", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Suggestions array" }
+        }
+      }
+    },
+    "/hotels/{slug}": {
+      "get": {
+        "summary": "Get hotel profile, room types, and details",
+        "tags": ["Hotels"],
+        "parameters": [
+          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Hotel details" },
+          "404": { "description": "Hotel not found" }
+        }
+      }
+    },
+    "/hotels/{slug}/calendar": {
+      "get": {
+        "summary": "Get monthly room availability and pricing calendar",
+        "tags": ["Hotels"],
+        "parameters": [
+          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "month", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Daily calendar breakdown" }
+        }
+      }
+    },
+    "/bookings/quote": {
+      "post": {
+        "summary": "Calculate dynamic quote with rules and taxes",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roomTypeId": { "type": "string" },
+                  "checkIn": { "type": "string" },
+                  "checkOut": { "type": "string" },
+                  "adults": { "type": "integer" }
+                },
+                "required": ["roomTypeId", "checkIn", "checkOut"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Price quote breakdown" }
+        }
+      }
+    },
+    "/bookings/hold": {
+      "post": {
+        "summary": "Place a 15-minute transactional inventory hold",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roomTypeId": { "type": "string" },
+                  "checkIn": { "type": "string" },
+                  "checkOut": { "type": "string" },
+                  "adults": { "type": "integer" },
+                  "guestDetails": { "type": "object" }
+                },
+                "required": ["roomTypeId", "checkIn", "checkOut"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Hold created" },
+          "409": { "description": "SOLD_OUT" }
+        }
+      }
+    },
+    "/bookings/{id}/confirm": {
+      "post": {
+        "summary": "Confirm held booking with payment method",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Confirmed booking" },
+          "410": { "description": "HOLD_EXPIRED" }
+        }
+      }
+    },
+    "/bookings/{id}/cancel": {
+      "post": {
+        "summary": "Cancel booking with refund and penalty calculation",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": { "type": "string" }
+                },
+                "required": ["reason"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Cancelled booking" }
+        }
+      }
+    },
+    "/admin/dashboard": {
+      "get": {
+        "summary": "Get admin operational KPIs, arrivals, and revenue analytics",
+        "tags": ["Admin"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Admin dashboard analytics" },
+          "403": { "description": "Forbidden (staff/guest)" }
+        }
+      }
+    },
+    "/admin/tape-chart": {
+      "get": {
+        "summary": "Front-desk tape chart multi-day room ledger",
+        "tags": ["Admin"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          { "name": "hotelId", "in": "query", "schema": { "type": "string" } },
+          { "name": "days", "in": "query", "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Tape chart rooms and occupancy bars" }
+        }
+      }
+    }
+  }
+}
