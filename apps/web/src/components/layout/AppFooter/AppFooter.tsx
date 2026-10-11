@@ -152,7 +152,7 @@ export const AppFooter: React.FC = () => {
               />
               <button className={styles.contactSubmit} type="submit">
                 <Send size={14} />
-                Send Query
+                Send
               </button>
             </form>
           </div>
