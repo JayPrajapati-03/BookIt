@@ -6,6 +6,56 @@ import styles from './HeroSearch.module.css';
 
 const POPULAR_CITIES = ['Udaipur', 'Jaipur', 'Jodhpur', 'Goa', 'Rishikesh', 'Varanasi', 'Shimla', 'Manali'];
 
+const HERO_IMAGES: Record<string, { src: string; alt: string }> = {
+  Udaipur: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/City%20Palace%20by%20lake%20Pichola%2C%20Udaipur.jpg',
+    alt: 'City Palace beside Lake Pichola in Udaipur',
+  },
+  Jaipur: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Courtyard%20of%20Samode%20Haveli%2C%20Jaipur.jpg',
+    alt: 'Jaipur haveli courtyard',
+  },
+  Jodhpur: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20city%20of%20Jodhpur.jpg',
+    alt: 'Blue city of Jodhpur viewed from Mehrangarh Fort',
+  },
+  Goa: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palolem%20Beach%2C%20South%20Goa.jpg',
+    alt: 'Palolem Beach in South Goa',
+  },
+  Rishikesh: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges%20at%20Rishikesh%20from%20Lakshman%20Jhula.jpg',
+    alt: 'Ganges at Rishikesh from Lakshman Jhula',
+  },
+  Varanasi: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20ghats%20at%20the%20sunrise.JPG',
+    alt: 'Varanasi ghats at sunrise',
+  },
+  Shimla: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20and%20Hawa%20Ghar%20Mall%20road%2C%20Shimla.jpg',
+    alt: 'Christ Church and Mall Road in Shimla',
+  },
+  Manali: {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Himalayan%20mountains%20in%20Manali%2C%20Himachal%20Pradesh.jpg',
+    alt: 'Himalayan mountains in Manali',
+  },
+};
+
+function getHeroImage(destination: string) {
+  const selectedCity = POPULAR_CITIES.find((city) =>
+    destination.toLowerCase().includes(city.toLowerCase()),
+  );
+
+  return HERO_IMAGES[selectedCity || 'Udaipur'];
+}
+
+function preloadHeroImages() {
+  Object.values(HERO_IMAGES).forEach(({ src }) => {
+    const image = new Image();
+    image.src = src;
+  });
+}
+
 export const HeroSearch: React.FC = () => {
   const navigate = useNavigate();
 
@@ -26,6 +76,10 @@ export const HeroSearch: React.FC = () => {
   const [suggestions, setSuggestions] = useState<HotelSuggestion[]>([]);
 
   const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    preloadHeroImages();
+  }, []);
 
   useEffect(() => {
     if (activePanel === 'city') {
@@ -56,12 +110,13 @@ export const HeroSearch: React.FC = () => {
   };
 
   const nights = Math.max(1, Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000));
+  const heroImage = getHeroImage(destination);
 
   return (
     <section className={styles.hero}>
       {/* Background Image with overlay */}
       <div className={styles.bg}>
-        <img src="/hero-bg.jpg" alt="Boutique Heritage Hotel" className={styles.bgImg} />
+        <img src={heroImage.src} alt={heroImage.alt} className={styles.bgImg} />
         <div className={styles.bgOverlay} />
       </div>
 
