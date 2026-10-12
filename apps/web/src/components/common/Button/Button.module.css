@@ -78,6 +78,15 @@
   background-color: var(--color-sand);
 }
 
+.subtle {
+  background-color: var(--color-sand);
+  color: var(--color-lagoon);
+}
+
+.subtle:hover:not(:disabled) {
+  background-color: var(--color-stone);
+}
+
 .danger {
   background-color: var(--color-signal);
   color: #ffffff;

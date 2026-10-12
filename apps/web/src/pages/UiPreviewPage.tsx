@@ -69,6 +69,7 @@ export const UiPreviewPage: React.FC = () => {
           <Button variant="secondary">Secondary Lagoon</Button>
           <Button variant="outline">Outline</Button>
           <Button variant="ghost">Ghost</Button>
+          <Button variant="subtle">Subtle</Button>
           <Button variant="danger">Destructive</Button>
         </div>
         <div className={styles.row}>

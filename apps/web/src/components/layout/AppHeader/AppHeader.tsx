@@ -95,7 +95,7 @@ export const AppHeader: React.FC = () => {
           {isAuthenticated && user ? (
             <>
               <Link to="/dashboard">
-                <Button id="header-dashboard-btn" variant="ghost" size="sm">
+                <Button id="header-dashboard-btn" variant="subtle" size="sm">
                   <User size={15} /> {user.name.split(' ')[0]}
                 </Button>
               </Link>
@@ -112,7 +112,7 @@ export const AppHeader: React.FC = () => {
           ) : (
             <>
               <Link to="/login">
-                <Button id="header-login-btn" variant="ghost" size="sm">
+                <Button id="header-login-btn" variant="subtle" size="sm">
                   Sign In
                 </Button>
               </Link>
