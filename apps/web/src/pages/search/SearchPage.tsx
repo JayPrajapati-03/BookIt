@@ -108,6 +108,17 @@ export const SearchPage: React.FC = () => {
     }).format(paise / 100);
   };
 
+  const getHotelDetailPath = (slug: string) => {
+    const stayParams = new URLSearchParams();
+    ['checkIn', 'checkOut', 'adults'].forEach((key) => {
+      const value = searchParams.get(key);
+      if (value) stayParams.set(key, value);
+    });
+
+    const queryString = stayParams.toString();
+    return queryString ? `/hotels/${slug}?${queryString}` : `/hotels/${slug}`;
+  };
+
   return (
     <div className={styles.container}>
       {/* Top Bar */}
@@ -300,7 +311,7 @@ export const SearchPage: React.FC = () => {
               }}
             >
               {hotels.map((h) => (
-                <Link to={`/hotels/${h.slug}`} key={h._id} className={styles.card}>
+                <Link to={getHotelDetailPath(h.slug)} key={h._id} className={styles.card}>
                   <div className={styles.imageWrapper}>
                     <img
                       src={

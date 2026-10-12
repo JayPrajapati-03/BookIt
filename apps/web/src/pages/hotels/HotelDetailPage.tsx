@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { differenceInCalendarDays } from 'date-fns';
 import { useAppSelector } from '../../store/hooks.js';
 import { apiClient } from '../../services/api.js';
 import { Button, Skeleton, Badge, Dialog } from '../../components/common/index.js';
@@ -43,9 +44,30 @@ interface HotelData {
   images: Array<{ url: string; alt?: string }>;
 }
 
+const DEFAULT_CHECK_IN = '2026-10-14';
+const DEFAULT_CHECK_OUT = '2026-10-17';
+const DEFAULT_ADULTS = 2;
+
+const isDateInputValue = (value: string) =>
+  /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(value).getTime());
+
+const getDateParam = (value: string | null, fallback: string): string =>
+  value && isDateInputValue(value) ? value : fallback;
+
+const getAdultParam = (value: string | null) => {
+  const adults = Number(value);
+  return Number.isInteger(adults) && adults > 0 ? adults : DEFAULT_ADULTS;
+};
+
+const getNightCount = (checkIn: string, checkOut: string) => {
+  const nights = differenceInCalendarDays(new Date(checkOut), new Date(checkIn));
+  return Number.isFinite(nights) && nights > 0 ? nights : 1;
+};
+
 export const HotelDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user } = useAppSelector((state) => state.auth);
 
   const [hotel, setHotel] = useState<HotelData | null>(null);
@@ -53,10 +75,13 @@ export const HotelDetailPage: React.FC = () => {
   const [selectedRoom, setSelectedRoom] = useState<RoomType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Default dates
-  const [checkIn, setCheckIn] = useState('2026-10-14');
-  const [checkOut, setCheckOut] = useState('2026-10-17');
-  const [nights, setNights] = useState(3);
+  const checkInParam = searchParams.get('checkIn');
+  const checkOutParam = searchParams.get('checkOut');
+  const adultsParam = searchParams.get('adults');
+
+  const [checkIn, setCheckIn] = useState(() => getDateParam(checkInParam, DEFAULT_CHECK_IN));
+  const [checkOut, setCheckOut] = useState(() => getDateParam(checkOutParam, DEFAULT_CHECK_OUT));
+  const [adults, setAdults] = useState(() => getAdultParam(adultsParam));
 
   // Lightbox
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
@@ -77,6 +102,12 @@ export const HotelDetailPage: React.FC = () => {
       .finally(() => setIsLoading(false));
   }, [slug]);
 
+  useEffect(() => {
+    setCheckIn(getDateParam(checkInParam, DEFAULT_CHECK_IN));
+    setCheckOut(getDateParam(checkOutParam, DEFAULT_CHECK_OUT));
+    setAdults(getAdultParam(adultsParam));
+  }, [checkInParam, checkOutParam, adultsParam]);
+
   const formatINR = (paise: number) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -95,13 +126,14 @@ export const HotelDetailPage: React.FC = () => {
     );
   }
 
+  const nights = getNightCount(checkIn, checkOut);
   const subtotalPaise = selectedRoom ? selectedRoom.basePricePaise * nights : 0;
   const taxPaise = Math.round(subtotalPaise * 0.18);
   const totalPaise = subtotalPaise + taxPaise;
 
   const handleHoldRoom = () => {
     if (!selectedRoom) return;
-    const checkoutUrl = `/checkout?hotel=${encodeURIComponent(slug || '')}&roomTypeId=${selectedRoom._id}&checkIn=${checkIn}&checkOut=${checkOut}&adults=2`;
+    const checkoutUrl = `/checkout?hotel=${encodeURIComponent(slug || '')}&roomTypeId=${selectedRoom._id}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}`;
     if (!user) {
       navigate(`/login?redirect=${encodeURIComponent(checkoutUrl)}`);
     } else {
