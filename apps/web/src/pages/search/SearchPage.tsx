@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useTransition } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
-import { apiClient } from '../../services/api.js';
+import { useSearchParams, Link, useLocation, useNavigate } from 'react-router-dom';
+import { apiClient, wishlistApi } from '../../services/api.js';
+import { useAppSelector } from '../../store/hooks.js';
 import { Button, Skeleton, EmptyState } from '../../components/common/index.js';
-import { Map, List, MapPin, Star, Filter, RefreshCw } from 'lucide-react';
+import { Map, List, MapPin, Star, Filter, Heart } from 'lucide-react';
 import { HotelSearchMap } from './HotelSearchMap.js';
 import styles from './SearchPage.module.css';
 
@@ -22,7 +23,10 @@ interface HotelItem {
 
 export const SearchPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isPending, startTransition] = useTransition();
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
 
   const [hotels, setHotels] = useState<HotelItem[]>([]);
   const [total, setTotal] = useState(0);
@@ -30,6 +34,8 @@ export const SearchPage: React.FC = () => {
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
+  const [savedHotelIds, setSavedHotelIds] = useState<Set<string>>(new Set());
+  const [savingHotelIds, setSavingHotelIds] = useState<Set<string>>(new Set());
 
   // Filter values read directly from URL search params for bookmarkability
   const city = searchParams.get('city') || '';
@@ -61,6 +67,21 @@ export const SearchPage: React.FC = () => {
         setIsSearching(false);
       });
   }, [searchParams]);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setSavedHotelIds(new Set());
+      return;
+    }
+
+    wishlistApi
+      .getAll()
+      .then((res) => {
+        const ids = (res.data.data.items || []).map((item: any) => item.hotel?._id).filter(Boolean);
+        setSavedHotelIds(new Set(ids));
+      })
+      .catch(() => {});
+  }, [isAuthenticated]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -117,6 +138,34 @@ export const SearchPage: React.FC = () => {
 
     const queryString = stayParams.toString();
     return queryString ? `/hotels/${slug}?${queryString}` : `/hotels/${slug}`;
+  };
+
+  const handleSaveToggle = async (hotelId: string) => {
+    if (!isAuthenticated) {
+      navigate(`/login?redirect=${encodeURIComponent(`${location.pathname}${location.search}`)}`);
+      return;
+    }
+
+    setSavingHotelIds((prev) => new Set(prev).add(hotelId));
+    try {
+      const res = await wishlistApi.toggle(hotelId);
+      const saved = Boolean(res.data.data.saved);
+      setSavedHotelIds((prev) => {
+        const next = new Set(prev);
+        if (saved) {
+          next.add(hotelId);
+        } else {
+          next.delete(hotelId);
+        }
+        return next;
+      });
+    } finally {
+      setSavingHotelIds((prev) => {
+        const next = new Set(prev);
+        next.delete(hotelId);
+        return next;
+      });
+    }
   };
 
   return (
@@ -310,56 +359,73 @@ export const SearchPage: React.FC = () => {
                 transition: 'opacity 0.2s ease',
               }}
             >
-              {hotels.map((h) => (
-                <Link to={getHotelDetailPath(h.slug)} key={h._id} className={styles.card}>
-                  <div className={styles.imageWrapper}>
-                    <img
-                      src={
-                        h.images[0]?.url ||
-                        'https://upload.wikimedia.org/wikipedia/commons/2/28/City_Palace%2C_Udaipur%2C_20191207_0501_6900.jpg'
-                      }
-                      alt={h.name}
-                      className={styles.image}
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src =
-                          'https://upload.wikimedia.org/wikipedia/commons/2/28/City_Palace%2C_Udaipur%2C_20191207_0501_6900.jpg';
-                      }}
-                    />
-                    <span className={styles.propertyBadge}>{h.propertyType}</span>
-                    <span className={styles.ratingBadge}>
-                      <Star size={11} fill="#d97706" color="#d97706" />
-                      {h.ratingAvg.toFixed(1)}
-                    </span>
-                  </div>
-                  <div className={styles.content}>
-                    <div className={styles.cityLocation}>
-                      <MapPin size={11} style={{ display: 'inline', marginRight: 3 }} />
-                      {h.city}, {h.state}
-                    </div>
+              {hotels.map((h) => {
+                const isSaved = savedHotelIds.has(h._id);
+                const isSaving = savingHotelIds.has(h._id);
 
-                    <h2 className={styles.hotelName} title={h.name}>
-                      {h.name}
-                    </h2>
-                    <p className={styles.tagline}>{h.tagline}</p>
-
-                    <div className={styles.cardFooter}>
-                      <div>
-                        <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                          From{' '}
-                        </span>
-                        <span className={styles.price}>{formatINR(h.fromPricePaise)}</span>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                          {' '}
-                          / night
+                return (
+                  <article key={h._id} className={styles.card}>
+                    <Link to={getHotelDetailPath(h.slug)} className={styles.cardLink}>
+                      <div className={styles.imageWrapper}>
+                        <img
+                          src={
+                            h.images[0]?.url ||
+                            'https://upload.wikimedia.org/wikipedia/commons/2/28/City_Palace%2C_Udaipur%2C_20191207_0501_6900.jpg'
+                          }
+                          alt={h.name}
+                          className={styles.image}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src =
+                              'https://upload.wikimedia.org/wikipedia/commons/2/28/City_Palace%2C_Udaipur%2C_20191207_0501_6900.jpg';
+                          }}
+                        />
+                        <span className={styles.propertyBadge}>{h.propertyType}</span>
+                        <span className={styles.ratingBadge}>
+                          <Star size={11} fill="#d97706" color="#d97706" />
+                          {h.ratingAvg.toFixed(1)}
                         </span>
                       </div>
-                      <span className={styles.viewLink}>View Rooms &rarr;</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                      <div className={styles.content}>
+                        <div className={styles.cityLocation}>
+                          <MapPin size={11} style={{ display: 'inline', marginRight: 3 }} />
+                          {h.city}, {h.state}
+                        </div>
+
+                        <h2 className={styles.hotelName} title={h.name}>
+                          {h.name}
+                        </h2>
+                        <p className={styles.tagline}>{h.tagline}</p>
+
+                        <div className={styles.cardFooter}>
+                          <div>
+                            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                              From{' '}
+                            </span>
+                            <span className={styles.price}>{formatINR(h.fromPricePaise)}</span>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
+                              {' '}
+                              / night
+                            </span>
+                          </div>
+                          <span className={styles.viewLink}>View Rooms &rarr;</span>
+                        </div>
+                      </div>
+                    </Link>
+                    <button
+                      type="button"
+                      className={`${styles.saveButton} ${isSaved ? styles.saveButtonActive : ''}`}
+                      onClick={() => handleSaveToggle(h._id)}
+                      disabled={isSaving}
+                      aria-label={isSaved ? `Remove ${h.name} from saved` : `Save ${h.name}`}
+                      title={isSaved ? 'Saved' : 'Save'}
+                    >
+                      <Heart size={17} fill={isSaved ? 'currentColor' : 'none'} />
+                    </button>
+                  </article>
+                );
+              })}
             </div>
           )}
         </main>
