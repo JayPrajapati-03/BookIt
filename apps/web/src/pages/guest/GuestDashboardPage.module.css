@@ -207,6 +207,7 @@
   gap: 16px;
 }
 .wishCard {
+  contain: layout paint;
   background: var(--bg-surface);
   border: var(--border-hairline);
   border-radius: var(--radius-lg);

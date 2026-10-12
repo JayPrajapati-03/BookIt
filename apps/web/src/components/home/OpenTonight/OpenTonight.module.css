@@ -39,6 +39,7 @@
 }
 
 .card {
+  contain: layout paint;
   background-color: var(--bg-surface);
   border: var(--border-hairline);
   border-radius: var(--radius-md);
