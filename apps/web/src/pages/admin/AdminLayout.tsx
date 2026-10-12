@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, Outlet, useLocation } from 'react-router-dom';
-import { useAppSelector } from '../../store/hooks.js';
+import { useAppDispatch, useAppSelector } from '../../store/hooks.js';
+import { apiClient } from '../../services/api.js';
+import { logout } from '../../store/slices/authSlice.js';
 import {
   LayoutDashboard,
   CalendarDays,
@@ -8,6 +10,7 @@ import {
   Users,
   BarChart3,
   ShieldCheck,
+  LogOut,
 } from 'lucide-react';
 import styles from './AdminLayout.module.css';
 
@@ -23,6 +26,7 @@ const NAV = [
 
 export const AdminLayout: React.FC = () => {
   const { user, isLoading } = useAppSelector((s) => s.auth);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -33,6 +37,16 @@ export const AdminLayout: React.FC = () => {
       navigate('/');
     }
   }, [isLoading, navigate, user]);
+
+  const handleLogout = async () => {
+    try {
+      await apiClient.post('/auth/logout');
+    } catch {
+      // Ignore network failure on logout.
+    }
+    dispatch(logout());
+    navigate('/login');
+  };
 
   if (isLoading) return null;
 
@@ -82,6 +96,14 @@ export const AdminLayout: React.FC = () => {
               </>
             )}
           </div>
+          <button
+            className={styles.logoutBtn}
+            onClick={handleLogout}
+            title="Sign out"
+            aria-label="Sign out"
+          >
+            <LogOut size={16} />
+          </button>
         </div>
       </aside>
 

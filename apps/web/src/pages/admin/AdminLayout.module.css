@@ -111,16 +111,20 @@
 .sidebarFooter {
   padding: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .collapsed .sidebarFooter {
-  padding: 0;
-  border-top: 0;
+  padding: 12px 8px;
 }
 .userInfo {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
+  flex: 1;
 }
 .footerName {
   font-size: 0.875rem;
@@ -135,6 +139,23 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.5);
+}
+.logoutBtn {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logoutBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
 }
 .main {
   flex: 1;
