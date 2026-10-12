@@ -51,8 +51,26 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.9,
     ratingCount: 128,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/2/28/City_Palace%2C_Udaipur%2C_20191207_0501_6900.jpg', alt: 'Rawla Fateh Haveli courtyard on Lake Pichola' },
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/1/17/20191207_Gangaur_Ghat_and_Bagore_Ki_Haveli%2C_Udaipur_1524_7266.jpg', alt: 'Gangaur Ghat and haveli waterfront' },
+      {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/1/17/20191207_Gangaur_Ghat_and_Bagore_Ki_Haveli%2C_Udaipur_1524_7266.jpg',
+        alt: 'Gangaur Ghat and Bagore Ki Haveli waterfront near Rawla Fateh',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/20191207%20Bagore%20Ki%20Haveli%2C%20Udaipur%2C%200646%207054.jpg',
+        alt: 'Bagore Ki Haveli carved heritage facade',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Entrance%20court%20at%20Bagore-ki-Haveli.jpg',
+        alt: 'Bagore Ki Haveli entrance courtyard',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Entrance%20Gate%20of%20the%20Gangaur%20Ghat.jpg',
+        alt: 'Gangaur Ghat entrance gate by the lake',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Interiors%20of%20Bagore%20Ki%20Haveli.jpg',
+        alt: 'Bagore Ki Haveli interior courtyard details',
+      },
     ],
     roomTypes: [
       {
@@ -115,8 +133,14 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.8,
     ratingCount: 94,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/d/df/Courtyard_of_Samode_Haveli%2C_Jaipur.jpg', alt: 'Courtyard of Samode Haveli in Jaipur' },
-      { url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d', alt: 'Garden swimming pool' },
+      {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/d/df/Courtyard_of_Samode_Haveli%2C_Jaipur.jpg',
+        alt: 'Courtyard of Samode Haveli in Jaipur',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
+        alt: 'Garden swimming pool',
+      },
     ],
     roomTypes: [
       {
@@ -161,8 +185,14 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.9,
     ratingCount: 142,
     images: [
-      { url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4', alt: 'Clifftop fortress over Arabian Sea' },
-      { url: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c', alt: 'Ocean sunset deck' },
+      {
+        url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4',
+        alt: 'Clifftop fortress over Arabian Sea',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c',
+        alt: 'Ocean sunset deck',
+      },
     ],
     roomTypes: [
       {
@@ -207,7 +237,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.8,
     ratingCount: 88,
     images: [
-      { url: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1', alt: 'Dutch colonial harbor view' },
+      {
+        url: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1',
+        alt: 'Dutch colonial harbor view',
+      },
     ],
     roomTypes: [
       {
@@ -252,7 +285,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.7,
     ratingCount: 65,
     images: [
-      { url: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4', alt: 'Luxury tents on the White Rann salt desert' },
+      {
+        url: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4',
+        alt: 'Luxury tents on the White Rann salt desert',
+      },
     ],
     roomTypes: [
       {
@@ -297,7 +333,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.8,
     ratingCount: 52,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Asiatic_Lion_Gir_Forest_India.jpg', alt: 'Asiatic Lion in Gir Forest National Park' },
+      {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Asiatic_Lion_Gir_Forest_India.jpg',
+        alt: 'Asiatic Lion in Gir Forest National Park',
+      },
     ],
     roomTypes: [
       {
@@ -332,7 +371,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.9,
     ratingCount: 110,
     images: [
-      { url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4', alt: 'Cedar lodge with Himalayan snow peaks' },
+      {
+        url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4',
+        alt: 'Cedar lodge with Himalayan snow peaks',
+      },
     ],
     roomTypes: [
       {
@@ -377,7 +419,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.8,
     ratingCount: 95,
     images: [
-      { url: 'https://images.unsplash.com/photo-1529290130-4ca3753253ae', alt: 'Sacred Ganges river view at dawn' },
+      {
+        url: 'https://images.unsplash.com/photo-1529290130-4ca3753253ae',
+        alt: 'Sacred Ganges river view at dawn',
+      },
     ],
     roomTypes: [
       {
@@ -422,7 +467,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.9,
     ratingCount: 104,
     images: [
-      { url: 'https://images.unsplash.com/photo-1488085061387-422e29b40080', alt: 'Riverside yoga shala in Himalayan foothills' },
+      {
+        url: 'https://images.unsplash.com/photo-1488085061387-422e29b40080',
+        alt: 'Riverside yoga shala in Himalayan foothills',
+      },
     ],
     roomTypes: [
       {
@@ -467,7 +515,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.8,
     ratingCount: 79,
     images: [
-      { url: 'https://images.unsplash.com/photo-1455587734955-081b22074882', alt: 'Misty Darjeeling tea estate at dawn' },
+      {
+        url: 'https://images.unsplash.com/photo-1455587734955-081b22074882',
+        alt: 'Misty Darjeeling tea estate at dawn',
+      },
     ],
     roomTypes: [
       {
@@ -511,7 +562,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.7,
     ratingCount: 58,
     images: [
-      { url: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da', alt: 'Intricate carved-wood UNESCO pol haveli' },
+      {
+        url: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da',
+        alt: 'Intricate carved-wood UNESCO pol haveli',
+      },
     ],
     roomTypes: [
       {
@@ -553,7 +607,10 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.9,
     ratingCount: 160,
     images: [
-      { url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb', alt: '1930s Art Deco facade near Gateway of India' },
+      {
+        url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb',
+        alt: '1930s Art Deco facade near Gateway of India',
+      },
     ],
     roomTypes: [
       {
@@ -591,33 +648,63 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.9,
     ratingCount: 312,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Taj_hotel%2Clake_pichola%2Cudaipur%2Crajasthan.jpg', alt: 'The Leela Palace and Lake Pichola waterfront' },
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Jag_Mandir%2C_Udaipur%2C_20191207_1428_7201.jpg', alt: 'Lake Pichola island view from Leela Palace' },
+      {
+        url: 'https://theleelaassets.com/prod/content/assets/2025-04/Hero%201_1920x950_7.jpg',
+        alt: 'The Leela Palace Udaipur on Lake Pichola',
+      },
+      {
+        url: 'https://www.theleela.com/prod/content/assets/styles/tl_full_screen_webp/public/2025-06/The%20Dinning%20Room_420x567.webp?VersionId=Bdvs6Ip298sLnzqea4kQgCUc5HuSxXJu&itok=FzkD3g5P',
+        alt: 'The Leela Palace lake-facing dining room',
+      },
+      {
+        url: 'https://cdn0.weddingwire.in/vendor/6022/3_2/1280/jpg/hotels-leela-palace-udaipur-facade-1_15_86022-163820330137189.jpeg',
+        alt: 'The Leela Palace rooftop pool terrace',
+      },
+      {
+        url: 'https://www.indianexcursions.co/wp-content/uploads/2016/09/leela-palace-luxury-hotel-udaipur-rajasthan-1024x720.jpeg',
+        alt: 'The Leela Palace Sheesh Mahal terrace',
+      },
+      {
+        url: 'https://i.mooool.com/img/2018/06/The-Leela-Palace-Udaipur-25.jpg',
+        alt: 'The Leela Palace illuminated poolside',
+      },
     ],
     roomTypes: [
       {
         name: 'Lake View Deluxe Room',
         slug: 'lake-view-deluxe-room-leela',
-        description: 'Marble-floored room with a private balcony directly facing Lake Pichola and the Jag Mandir island palace.',
+        description:
+          'Marble-floored room with a private balcony directly facing Lake Pichola and the Jag Mandir island palace.',
         maxGuests: 2,
         beds: '1 King Bed',
         sizeSqm: 52,
         amenities: ['Lake Balcony', 'Rain Shower', 'Butler Service', 'Minibar'],
         basePricePaise: 2800000, // ₹28,000
         roomCount: 14,
-        images: [{ url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427', alt: 'Lake View Room' }],
+        images: [
+          {
+            url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
+            alt: 'Lake View Room',
+          },
+        ],
       },
       {
         name: 'Royal Suite',
         slug: 'royal-suite-leela',
-        description: 'Expansive suite with a private plunge pool terrace, hand-painted frescoes, and a dedicated butler.',
+        description:
+          'Expansive suite with a private plunge pool terrace, hand-painted frescoes, and a dedicated butler.',
         maxGuests: 3,
         beds: '1 Super King Bed',
         sizeSqm: 110,
         amenities: ['Private Plunge Pool', 'Lake View', 'Frescoed Ceiling', 'Butler'],
         basePricePaise: 6500000, // ₹65,000
         roomCount: 4,
-        images: [{ url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd', alt: 'Royal Suite' }],
+        images: [
+          {
+            url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
+            alt: 'Royal Suite',
+          },
+        ],
       },
     ],
   },
@@ -632,25 +719,56 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     address: 'Fateh Sagar Lake Road, Udaipur 313001',
     location: { type: 'Point', coordinates: [73.6865, 24.5954] },
     propertyType: 'lodge',
-    amenities: ['Hilltop View', 'Heritage Architecture', 'Swimming Pool', 'Cultural Performances', 'WiFi'],
+    amenities: [
+      'Hilltop View',
+      'Heritage Architecture',
+      'Swimming Pool',
+      'Cultural Performances',
+      'WiFi',
+    ],
     starRating: 4,
     ratingAvg: 4.7,
     ratingCount: 178,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/3/39/20191208_Brama_Pa%C5%82acu_Monsunowego_w_Udajpurze_1246_7576.jpg', alt: 'Fateh Garh hilltop fort lodge gate and ramparts' },
+      {
+        url: 'https://assets.simplotel.com/simplotel/image/upload/w_900%2Ch_600%2Cc_fill%2Cg_auto%2Cq_80%2Cf_auto/fateh-garh/Infinity_Swimming_Pool_Baradari_Restaurant_-_2_hwtx6b',
+        alt: 'Fateh Garh Baradari terrace and pool',
+      },
+      {
+        url: 'https://www.goldentriangletoursinindia.com/uploads/fateh-garh-udaipur.webp',
+        alt: 'Fateh Garh palace facade at dusk',
+      },
+      {
+        url: 'https://assets.simplotel.com/simplotel/image/upload/w_600%2Ch_400%2Cc_fill%2Cg_auto%2Cq_80%2Cf_auto/fateh-collection/1_-_Suraj_Gokhda_rpgdnu',
+        alt: 'Fateh Garh private dining with Aravalli views',
+      },
+      {
+        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_188%2Cw_3600%2Ch_2024%2Cr_0%2Cc_crop%2Cq_80%2Cfl_progressive/w_900%2Cf_auto%2Cc_fit/fateh-garh/095_jvifec',
+        alt: 'Fateh Garh marble lounge and carved pillars',
+      },
+      {
+        url: 'https://cdn.audleytravel.com/1050/750/79/329987-pool-at-fateh-garh-udaipur.jpg',
+        alt: 'Fateh Garh illuminated pool at night',
+      },
     ],
     roomTypes: [
       {
         name: 'Aravalli Valley Room',
         slug: 'aravalli-valley-room',
-        description: 'Stone-walled room with carved arched windows framing rolling Aravalli hills and Fateh Sagar Lake.',
+        description:
+          'Stone-walled room with carved arched windows framing rolling Aravalli hills and Fateh Sagar Lake.',
         maxGuests: 2,
         beds: '1 King Bed',
         sizeSqm: 40,
         amenities: ['Hill View', 'Ethnic Textiles', 'Stone Shower'],
         basePricePaise: 780000, // ₹7,800
         roomCount: 8,
-        images: [{ url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427', alt: 'Valley Room' }],
+        images: [
+          {
+            url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
+            alt: 'Valley Room',
+          },
+        ],
       },
     ],
   },
@@ -665,25 +783,57 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     address: 'Goverdhan Vilas, Udaipur–Ahmedabad Highway, Udaipur 313001',
     location: { type: 'Point', coordinates: [73.6979, 24.5284] },
     propertyType: 'camp',
-    amenities: ['Wildlife Safari', 'Campfire Dinners', 'Horse Riding', 'Bird Watching', 'Stargazing', 'WiFi'],
+    amenities: [
+      'Wildlife Safari',
+      'Campfire Dinners',
+      'Horse Riding',
+      'Bird Watching',
+      'Stargazing',
+      'WiFi',
+    ],
     starRating: 4,
     ratingAvg: 4.6,
     ratingCount: 88,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Aravalli_Range%2C_Udaipur.jpg', alt: 'Aravalli Range wilderness surrounding Shikarbadi' },
+      {
+        url: 'https://y.cdrst.com/foto/hotel-sf/125a2b1b/granderesp/foto-hotel-125a2071.jpg',
+        alt: 'Shikarbadi Hotel heritage exterior at dusk',
+      },
+      {
+        url: 'https://cdn0.weddingwire.in/vendor/2018/3_2/960/jpg/poolside004_15_82018.jpeg',
+        alt: 'Shikarbadi Hotel poolside by the Aravalli hills',
+      },
+      {
+        url: 'https://z.cdrst.com/foto/hotel-sf/7e2e/granderesp/shikarbadi-hotel-heritage-by-hrh-group-of-hotels-restauracion-125a2065.jpg',
+        alt: 'Shikarbadi Hotel heritage dining room',
+      },
+      {
+        url: 'https://www.nativeplanet.com/photos/hotels/750x450/_13591191122.jpg',
+        alt: 'Shikarbadi Hotel suite with heritage decor',
+      },
+      {
+        url: 'https://z.cdrst.com/foto/hotel-sf/7e2e/granderesp/shikarbadi-hotel-heritage-by-hrh-group-of-hotels-restauracion-125a2059.jpg',
+        alt: 'Shikarbadi Hotel lakeside dining terrace',
+      },
     ],
     roomTypes: [
       {
         name: 'Royal Mewar Safari Tent',
         slug: 'royal-mewar-safari-tent',
-        description: 'Palatial canvas tent with teak furniture, en-suite bath, and a private sit-out veranda facing the deer meadow.',
+        description:
+          'Palatial canvas tent with teak furniture, en-suite bath, and a private sit-out veranda facing the deer meadow.',
         maxGuests: 2,
         beds: '1 King Bed',
         sizeSqm: 45,
         amenities: ['Forest View', 'Outdoor Shower', 'Minibar', 'Climate Control'],
         basePricePaise: 950000, // ₹9,500
         roomCount: 10,
-        images: [{ url: 'https://images.unsplash.com/photo-1540541338287-41700207dee6', alt: 'Safari Tent' }],
+        images: [
+          {
+            url: 'https://images.unsplash.com/photo-1540541338287-41700207dee6',
+            alt: 'Safari Tent',
+          },
+        ],
       },
     ],
   },
@@ -703,20 +853,45 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.8,
     ratingCount: 224,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Hanuman_Ghat%2C_Udaipur%2C_Rajasthan.jpg', alt: 'Hanuman Ghat and Udai Kothi lakeside' },
+      {
+        url: 'https://www.reisroutes.be/userfiles/fotos/hotel-udai-kothi-udaipur_14839_xl.jpg',
+        alt: 'Udai Kothi rooftop pool and city view',
+      },
+      {
+        url: 'https://static.wixstatic.com/media/cdadc4_e3b22bb2e875488ea6e7376cbcd3f110~mv2.jpg/v1/fill/w_800%2Ch_531%2Cal_c%2Cq_85/7np4dgqk1p0vh77o18dmcbfi007v.jpg',
+        alt: 'Udai Kothi rooftop dining terrace',
+      },
+      {
+        url: 'https://images.squarespace-cdn.com/content/v1/5e1077b0019b062397153b23/1584357806878-SVVHMK8H1T5YRX20UJMR/image-asset.jpeg',
+        alt: 'Udai Kothi heritage hotel entrance',
+      },
+      {
+        url: 'https://cdn0.weddingwire.in/vendor/9775/3_2/960/jpg/1711715417597_15_309775-171498390121604.jpeg',
+        alt: 'Udai Kothi canopy suite',
+      },
+      {
+        url: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/cd/2e/54/udai-kothi-udai-suite.jpg?h=-1&s=1&w=700',
+        alt: 'Udai Kothi rooftop pool at sunset',
+      },
     ],
     roomTypes: [
       {
         name: 'Lake Heritage Room',
         slug: 'lake-heritage-room-udai-kothi',
-        description: 'Intimate room with carved Rajasthani furniture, colourful block-print textiles, and lake-facing bay windows.',
+        description:
+          'Intimate room with carved Rajasthani furniture, colourful block-print textiles, and lake-facing bay windows.',
         maxGuests: 2,
         beds: '1 Queen Bed',
         sizeSqm: 28,
         amenities: ['Lake View', 'Block-Print Linens', 'Rooftop Pool Access'],
         basePricePaise: 560000, // ₹5,600
         roomCount: 10,
-        images: [{ url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427', alt: 'Heritage Room' }],
+        images: [
+          {
+            url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
+            alt: 'Heritage Room',
+          },
+        ],
       },
     ],
   },
@@ -736,20 +911,45 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingAvg: 4.7,
     ratingCount: 142,
     images: [
-      { url: 'https://upload.wikimedia.org/wikipedia/commons/d/d7/Old_city_in_udaipur_12.jpg', alt: 'Authentic residential lane in Udaipur old city' },
+      {
+        url: 'https://gos3.ibcdn.com/6af76976-9739-4eb6-afb1-bc9af1201bc7.jpg',
+        alt: 'Nukkad Guest House facade in Udaipur old city',
+      },
+      {
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/608866238.jpg?k=3da8274eec6d587d30259744fb77cbbdebf8d0d00748eef9144b9beb30072f2c&o=',
+        alt: 'Nukkad Guest House heritage courtyard',
+      },
+      {
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/798813689.jpg?k=5c0a3cde2e19d2838dc8f48cdfcd2c373c64c718aedb4648a801dbb18c1f4aa0&o=',
+        alt: 'Nukkad Guest House colorful haveli atrium',
+      },
+      {
+        url: 'https://q-xx.bstatic.com/xdata/images/hotel/max1200/512675793.jpg?k=3391ea5e5f1be9857f947421d4882624b639db82976b2b464df4b5f6ef7d9d22&o=',
+        alt: 'Nukkad Guest House rooftop view toward City Palace',
+      },
+      {
+        url: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/98/83/ab/heritage-haveli.jpg?h=1200&s=1&w=1200',
+        alt: 'Nukkad Guest House rooftop restaurant terrace',
+      },
     ],
     roomTypes: [
       {
         name: 'Traditional Mewari Room',
         slug: 'traditional-mewari-room',
-        description: 'Simple, lovingly decorated room with hand-stitched quilts, terracotta floors, and a rooftop terrace view of the old city.',
+        description:
+          'Simple, lovingly decorated room with hand-stitched quilts, terracotta floors, and a rooftop terrace view of the old city.',
         maxGuests: 2,
         beds: '1 Double Bed',
         sizeSqm: 20,
         amenities: ['Rooftop Access', 'Home Breakfast Included', 'City View'],
         basePricePaise: 180000, // ₹1,800
         roomCount: 4,
-        images: [{ url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427', alt: 'Mewari Room' }],
+        images: [
+          {
+            url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
+            alt: 'Mewari Room',
+          },
+        ],
       },
     ],
   },
