@@ -79,7 +79,7 @@ export const BookingDetailPage: React.FC = () => {
         <div className={styles.notFound}>
           <AlertTriangle size={48} />
           <h2>Booking not found</h2>
-          <Link to="/bookings">View all bookings</Link>
+          <Link to="/dashboard">View all bookings</Link>
         </div>
       </div>
     );
@@ -94,7 +94,7 @@ export const BookingDetailPage: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <div>
-          <Link to="/bookings" className={styles.back}>
+          <Link to="/dashboard" className={styles.back}>
             ← My Bookings
           </Link>
           <h1 className={styles.reference}>{booking.reference}</h1>
