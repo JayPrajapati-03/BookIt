@@ -14,15 +14,39 @@ import {
 } from 'lucide-react';
 import styles from './AdminLayout.module.css';
 
+type AdminRole = 'staff' | 'admin';
+
 const NAV = [
-  { label: 'Dashboard', icon: <LayoutDashboard size={18} />, path: '/admin' },
-  { label: 'Bookings', icon: <CalendarDays size={18} />, path: '/admin/bookings' },
-  { label: 'Tape Chart', icon: <CalendarDays size={18} />, path: '/admin/tape-chart' },
-  { label: 'Properties', icon: <Building2 size={18} />, path: '/admin/properties' },
-  { label: 'Users', icon: <Users size={18} />, path: '/admin/users' },
-  { label: 'Reports', icon: <BarChart3 size={18} />, path: '/admin/reports' },
-  { label: 'Audit Logs', icon: <ShieldCheck size={18} />, path: '/admin/audit-logs' },
+  { label: 'Dashboard', icon: <LayoutDashboard size={18} />, path: '/admin', roles: ['admin'] },
+  {
+    label: 'Bookings',
+    icon: <CalendarDays size={18} />,
+    path: '/admin/bookings',
+    roles: ['staff', 'admin'],
+  },
+  {
+    label: 'Tape Chart',
+    icon: <CalendarDays size={18} />,
+    path: '/admin/tape-chart',
+    roles: ['staff', 'admin'],
+  },
+  {
+    label: 'Properties',
+    icon: <Building2 size={18} />,
+    path: '/admin/properties',
+    roles: ['admin'],
+  },
+  { label: 'Users', icon: <Users size={18} />, path: '/admin/users', roles: ['admin'] },
+  { label: 'Reports', icon: <BarChart3 size={18} />, path: '/admin/reports', roles: ['admin'] },
+  {
+    label: 'Audit Logs',
+    icon: <ShieldCheck size={18} />,
+    path: '/admin/audit-logs',
+    roles: ['admin'],
+  },
 ];
+
+const STAFF_ALLOWED_PATHS = ['/admin/bookings', '/admin/tape-chart'];
 
 export const AdminLayout: React.FC = () => {
   const { user, isLoading } = useAppSelector((s) => s.auth);
@@ -35,8 +59,12 @@ export const AdminLayout: React.FC = () => {
     if (isLoading) return;
     if (!user || !['staff', 'admin'].includes(user.role)) {
       navigate('/');
+      return;
     }
-  }, [isLoading, navigate, user]);
+    if (user.role === 'staff' && !STAFF_ALLOWED_PATHS.includes(location.pathname)) {
+      navigate('/admin/bookings', { replace: true });
+    }
+  }, [isLoading, location.pathname, navigate, user]);
 
   const handleLogout = async () => {
     try {
@@ -69,11 +97,10 @@ export const AdminLayout: React.FC = () => {
 
         <nav className={styles.nav}>
           {NAV.map((item) => {
+            if (!item.roles.includes(user?.role as AdminRole)) return null;
             const isActive =
               location.pathname === item.path ||
               (item.path !== '/admin' && location.pathname.startsWith(item.path));
-            if (item.label === 'Users' && user?.role !== 'admin') return null;
-            if (item.label === 'Audit Logs' && user?.role !== 'admin') return null;
             return (
               <Link
                 key={item.path}
