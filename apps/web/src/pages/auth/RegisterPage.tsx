@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { registerSchema, type RegisterInput } from '@bookit/shared';
 import { Button, Field } from '../../components/common/index.js';
 import { apiClient } from '../../services/api.js';
@@ -13,6 +13,8 @@ import styles from './LoginPage.module.css';
 export const RegisterPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get('redirect');
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -36,7 +38,11 @@ export const RegisterPage: React.FC = () => {
       const { user, accessToken } = response.data.data;
       dispatch(setCredentials({ user, accessToken }));
       toast.success('Account created successfully! Welcome to BookIt.');
-      navigate('/');
+      if (redirect) {
+        navigate(redirect);
+      } else {
+        navigate('/');
+      }
     } catch (err: unknown) {
       const axiosErr = err as { response?: { data?: { error?: { message?: string } } } };
       const message =
@@ -97,7 +103,10 @@ export const RegisterPage: React.FC = () => {
 
         <div className={styles.footerLinks}>
           Already have an account?{' '}
-          <Link to="/login" className={styles.link}>
+          <Link
+            to={redirect ? `/login?redirect=${encodeURIComponent(redirect)}` : '/login'}
+            className={styles.link}
+          >
             Sign in
           </Link>
         </div>

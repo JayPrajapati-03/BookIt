@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../store/hooks.js';
 import { apiClient } from '../../services/api.js';
 import { Button, Skeleton, Badge, Dialog } from '../../components/common/index.js';
 import { MapPin, Star, Bed, Users, Maximize2, ShieldCheck, Check } from 'lucide-react';
@@ -45,6 +46,7 @@ interface HotelData {
 export const HotelDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { user } = useAppSelector((state) => state.auth);
 
   const [hotel, setHotel] = useState<HotelData | null>(null);
   const [roomTypes, setRoomTypes] = useState<RoomType[]>([]);
@@ -99,8 +101,12 @@ export const HotelDetailPage: React.FC = () => {
 
   const handleHoldRoom = () => {
     if (!selectedRoom) return;
-    // Will navigate to checkout in Phase 4
-    navigate(`/search`);
+    const checkoutUrl = `/checkout?hotel=${encodeURIComponent(slug || '')}&roomTypeId=${selectedRoom._id}&checkIn=${checkIn}&checkOut=${checkOut}&adults=2`;
+    if (!user) {
+      navigate(`/login?redirect=${encodeURIComponent(checkoutUrl)}`);
+    } else {
+      navigate(checkoutUrl);
+    }
   };
 
   return (

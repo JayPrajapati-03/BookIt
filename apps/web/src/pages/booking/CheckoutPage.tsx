@@ -49,7 +49,8 @@ export const CheckoutPage: React.FC = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate('/login');
+      const redirectUrl = `/checkout?${searchParams.toString()}`;
+      navigate(`/login?redirect=${encodeURIComponent(redirectUrl)}`);
       return;
     }
     if (!roomTypeId || !checkIn || !checkOut) {

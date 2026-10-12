@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { loginSchema, type LoginInput } from '@bookit/shared';
 import { Button, Field } from '../../components/common/index.js';
 import { apiClient } from '../../services/api.js';
@@ -14,6 +14,8 @@ import styles from './LoginPage.module.css';
 export const LoginPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get('redirect');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -36,7 +38,9 @@ export const LoginPage: React.FC = () => {
       const { user, accessToken } = response.data.data;
       dispatch(setCredentials({ user, accessToken }));
       toast.success(`Welcome back, ${user.name}`);
-      if (user.role === 'admin' || user.role === 'staff') {
+      if (redirect) {
+        navigate(redirect);
+      } else if (user.role === 'admin' || user.role === 'staff') {
         navigate('/admin');
       } else {
         navigate('/');
@@ -92,7 +96,10 @@ export const LoginPage: React.FC = () => {
 
         <div className={styles.footerLinks}>
           Don't have an account?{' '}
-          <Link to="/register" className={styles.link}>
+          <Link
+            to={redirect ? `/register?redirect=${encodeURIComponent(redirect)}` : '/register'}
+            className={styles.link}
+          >
             Create an account
           </Link>
         </div>
