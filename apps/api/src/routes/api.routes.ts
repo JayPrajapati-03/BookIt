@@ -97,7 +97,7 @@ apiRouter.get(
   getOccupancyReport,
 );
 
-apiRouter.get('/admin/hotels', authenticate, authorize('hotels:manage'), adminListHotels);
+apiRouter.get('/admin/hotels', authenticate, authorize('hotels:read'), adminListHotels);
 apiRouter.post('/admin/hotels', authenticate, authorize('hotels:manage'), adminCreateHotel);
 apiRouter.patch('/admin/hotels/:id', authenticate, authorize('hotels:manage'), adminUpdateHotel);
 

@@ -20,6 +20,7 @@ export const PERMISSIONS = [
   'notifications:read:own',
 
   // Admin Properties & Pricing
+  'hotels:read',
   'hotels:manage',
   'rooms:manage',
   'pricing:manage',
@@ -51,6 +52,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, readonly Permission[]> = {
     'bookings:update:status',
     'bookings:walk_in',
     'bookings:move',
+    'hotels:read',
     'notifications:read:own',
     'blocks:manage',
     'reviews:respond',
