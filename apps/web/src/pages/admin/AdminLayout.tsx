@@ -11,12 +11,20 @@ import {
   BarChart3,
   ShieldCheck,
   LogOut,
+  ClipboardList,
+  UserPlus,
 } from 'lucide-react';
 import styles from './AdminLayout.module.css';
 
 type AdminRole = 'staff' | 'admin';
 
 const NAV = [
+  {
+    label: 'Today',
+    icon: <ClipboardList size={18} />,
+    path: '/admin/today',
+    roles: ['staff', 'admin'],
+  },
   { label: 'Dashboard', icon: <LayoutDashboard size={18} />, path: '/admin', roles: ['admin'] },
   {
     label: 'Bookings',
@@ -28,6 +36,12 @@ const NAV = [
     label: 'Tape Chart',
     icon: <CalendarDays size={18} />,
     path: '/admin/tape-chart',
+    roles: ['staff', 'admin'],
+  },
+  {
+    label: 'Walk-in',
+    icon: <UserPlus size={18} />,
+    path: '/admin/walk-in',
     roles: ['staff', 'admin'],
   },
   {
@@ -46,7 +60,12 @@ const NAV = [
   },
 ];
 
-const STAFF_ALLOWED_PATHS = ['/admin/bookings', '/admin/tape-chart'];
+const STAFF_ALLOWED_PATHS = [
+  '/admin/today',
+  '/admin/bookings',
+  '/admin/tape-chart',
+  '/admin/walk-in',
+];
 
 export const AdminLayout: React.FC = () => {
   const { user, isLoading } = useAppSelector((s) => s.auth);

@@ -42,6 +42,7 @@ export const ROUTE_REGISTRY: RouteDefinition[] = [
 
   // Admin-only routes
   { method: 'GET', path: '/api/v1/admin/hotels', requiredPermission: 'hotels:read' },
+  { method: 'GET', path: '/api/v1/admin/room-types', requiredPermission: 'hotels:read' },
   { method: 'POST', path: '/api/v1/admin/hotels', requiredPermission: 'hotels:manage' },
   { method: 'POST', path: '/api/v1/admin/pricing-rules', requiredPermission: 'pricing:manage' },
   { method: 'GET', path: '/api/v1/admin/audit-logs', requiredPermission: 'audit:read' },

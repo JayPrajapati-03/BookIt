@@ -101,7 +101,7 @@ apiRouter.get('/admin/hotels', authenticate, authorize('hotels:read'), adminList
 apiRouter.post('/admin/hotels', authenticate, authorize('hotels:manage'), adminCreateHotel);
 apiRouter.patch('/admin/hotels/:id', authenticate, authorize('hotels:manage'), adminUpdateHotel);
 
-apiRouter.get('/admin/room-types', authenticate, authorize('hotels:manage'), adminListRoomTypes);
+apiRouter.get('/admin/room-types', authenticate, authorize('hotels:read'), adminListRoomTypes);
 apiRouter.post('/admin/room-types', authenticate, authorize('hotels:manage'), adminCreateRoomType);
 
 apiRouter.get(

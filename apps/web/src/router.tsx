@@ -11,7 +11,9 @@ import { BookingDetailPage } from './pages/booking/BookingDetailPage.js';
 import { GuestDashboardPage } from './pages/guest/GuestDashboardPage.js';
 import { AdminLayout } from './pages/admin/AdminLayout.js';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage.js';
+import { AdminTodayPage } from './pages/admin/AdminTodayPage.js';
 import { AdminBookingsPage } from './pages/admin/AdminBookingsPage.js';
+import { AdminWalkInPage } from './pages/admin/AdminWalkInPage.js';
 import { TapeChartPage } from './pages/admin/TapeChartPage.js';
 import { AdminReportsPage } from './pages/admin/AdminReportsPage.js';
 import { AdminAuditPage } from './pages/admin/AdminAuditPage.js';
@@ -54,8 +56,10 @@ export const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       { index: true, element: <AdminDashboardPage /> },
+      { path: 'today', element: <AdminTodayPage /> },
       { path: 'bookings', element: <AdminBookingsPage /> },
       { path: 'tape-chart', element: <TapeChartPage /> },
+      { path: 'walk-in', element: <AdminWalkInPage /> },
       { path: 'properties', element: <AdminPropertiesPage /> },
       { path: 'reports', element: <AdminReportsPage /> },
       { path: 'audit-logs', element: <AdminAuditPage /> },
