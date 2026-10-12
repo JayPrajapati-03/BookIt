@@ -54,7 +54,10 @@ describe('Route × Role RBAC Matrix Test', () => {
 
         const res = await req;
 
-        if (route.isPublic) {
+        if (route.path === '/api/v1/auth/refresh') {
+          // Refresh endpoint requires a valid refresh token cookie; returns 401 when absent
+          expect(res.status).toBe(401);
+        } else if (route.isPublic) {
           // Public routes should never return 401 or 403
           expect(res.status).not.toBe(401);
           expect(res.status).not.toBe(403);

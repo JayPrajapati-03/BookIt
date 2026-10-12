@@ -49,7 +49,7 @@ apiClient.interceptors.response.use(
       originalRequest._retry = true;
       isRefreshing = true;
       try {
-        const res = await apiClient.post('/auth/refresh');
+        const res = await apiClient.post('/auth/refresh', {});
         const newToken = res.data?.data?.accessToken;
         if (newToken) {
           setAccessToken(newToken);
@@ -60,8 +60,8 @@ apiClient.interceptors.response.use(
       } catch (refreshErr) {
         processQueue(refreshErr);
         setAccessToken(null);
-        // Redirect to login on full refresh failure
         if (typeof window !== 'undefined') {
+          localStorage.removeItem('bookit_logged_in');
           window.location.href = '/login';
         }
         return Promise.reject(refreshErr);

@@ -14,9 +14,17 @@ export const AuthBootstrap: React.FC<AuthBootstrapProps> = ({ children }) => {
   const isLoading = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
+    const hasSession =
+      typeof window !== 'undefined' && localStorage.getItem('bookit_logged_in') === 'true';
+
+    if (!hasSession) {
+      dispatch(setLoading(false));
+      return;
+    }
+
     if (!restorePromise) {
       restorePromise = apiClient
-        .post('/auth/refresh')
+        .post('/auth/refresh', {})
         .then((res) => {
           const { user, accessToken } = res.data.data;
           dispatch(setCredentials({ user, accessToken }));

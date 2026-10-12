@@ -31,12 +31,18 @@ export const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.isAuthenticated = true;
       setAccessToken(action.payload.accessToken);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('bookit_logged_in', 'true');
+      }
     },
     logout: (state) => {
       state.user = null;
       state.accessToken = null;
       state.isAuthenticated = false;
       setAccessToken(null);
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('bookit_logged_in');
+      }
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
