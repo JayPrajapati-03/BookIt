@@ -592,8 +592,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 79,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1455587734955-081b22074882',
-        alt: 'Misty Darjeeling tea estate at dawn',
+        url: 'https://images.unsplash.com/photo-1587061949409-02df41d5e562?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Colonial-style British bungalow with gardens',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Tea plantation terraces in Darjeeling hills',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1729731322165-241913981ba1?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Historic colonial fireplace and cozy interior',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Misty mountain view from Darjeeling',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Vintage colonial house exterior',
       },
     ],
     roomTypes: [
