@@ -134,12 +134,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 94,
     images: [
       {
-        url: 'https://upload.wikimedia.org/wikipedia/commons/d/df/Courtyard_of_Samode_Haveli%2C_Jaipur.jpg',
-        alt: 'Courtyard of Samode Haveli in Jaipur',
+        url: 'https://images.unsplash.com/photo-1773155920824-54413d1a3876?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Jaipur heritage haveli courtyard with sandstone architecture',
       },
       {
-        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
-        alt: 'Garden swimming pool',
+        url: 'https://images.unsplash.com/photo-ZIoAHmZCcSs?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0',
+        alt: 'Hawa Mahal Palace of Winds in Jaipur',
+      },
+      {
+        url: 'https://plus.unsplash.com/premium_photo-1697730307121-cf9d07ce03c7?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0',
+        alt: 'Jal Mahal Water Palace in Man Sagar Lake Jaipur',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1767725885743-d3c4f8c2d570?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0',
+        alt: 'Ornate sandstone haveli with intricate carvings in Jaisalmer',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-RugN1OsUwHM?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0',
+        alt: 'Hawa Mahal the pink palace of Jaipur',
       },
     ],
     roomTypes: [
