@@ -4,7 +4,16 @@ import { getHotelSuggestions, type HotelSuggestion } from '../../../services/api
 import { MapPin, Calendar, Users, Search, ChevronDown } from 'lucide-react';
 import styles from './HeroSearch.module.css';
 
-const POPULAR_CITIES = ['Udaipur', 'Jaipur', 'Jodhpur', 'Goa', 'Rishikesh', 'Varanasi', 'Shimla', 'Manali'];
+const POPULAR_CITIES = [
+  'Udaipur',
+  'Jaipur',
+  'Jodhpur',
+  'Goa',
+  'Rishikesh',
+  'Varanasi',
+  'Shimla',
+  'Manali',
+];
 
 const HERO_IMAGES: Record<string, { src: string; alt: string }> = {
   Udaipur: {
@@ -100,7 +109,12 @@ export const HeroSearch: React.FC = () => {
   }, []);
 
   const handleSearch = () => {
-    const params = new URLSearchParams({ city: destination, checkIn, checkOut, adults: guests.toString() });
+    const params = new URLSearchParams({
+      city: destination,
+      checkIn,
+      checkOut,
+      adults: guests.toString(),
+    });
     navigate(`/search?${params.toString()}`);
   };
 
@@ -109,7 +123,10 @@ export const HeroSearch: React.FC = () => {
     return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
   };
 
-  const nights = Math.max(1, Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000));
+  const nights = Math.max(
+    1,
+    Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000),
+  );
   const heroImage = getHeroImage(destination);
 
   return (
@@ -134,49 +151,77 @@ export const HeroSearch: React.FC = () => {
         {/* Search Card */}
         <div className={styles.searchCard} ref={panelRef}>
           <div className={styles.searchFields}>
-
             {/* Destination */}
-            <div className={styles.field} onClick={() => setActivePanel(activePanel === 'city' ? null : 'city')}>
+            <div
+              className={styles.field}
+              onClick={() => setActivePanel(activePanel === 'city' ? null : 'city')}
+            >
               <MapPin size={16} className={styles.fieldIcon} />
               <div className={styles.fieldInner}>
                 <span className={styles.fieldLabel}>Destination</span>
                 <span className={styles.fieldValue}>{destination || 'Where to?'}</span>
               </div>
-              <ChevronDown size={14} className={`${styles.chevron} ${activePanel === 'city' ? styles.chevronOpen : ''}`} />
+              <ChevronDown
+                size={14}
+                className={`${styles.chevron} ${activePanel === 'city' ? styles.chevronOpen : ''}`}
+              />
             </div>
 
             <div className={styles.divider} />
 
             {/* Check-in */}
-            <div className={styles.field} onClick={() => setActivePanel(activePanel === 'dates' ? null : 'dates')}>
+            <div
+              className={styles.field}
+              onClick={() => setActivePanel(activePanel === 'dates' ? null : 'dates')}
+            >
               <Calendar size={16} className={styles.fieldIcon} />
               <div className={styles.fieldInner}>
                 <span className={styles.fieldLabel}>Check-in</span>
                 <span className={styles.fieldValue}>{formatDate(checkIn)}</span>
               </div>
+              <ChevronDown
+                size={14}
+                className={`${styles.chevron} ${activePanel === 'dates' ? styles.chevronOpen : ''}`}
+              />
             </div>
 
             <div className={styles.divider} />
 
             {/* Check-out */}
-            <div className={styles.field} onClick={() => setActivePanel(activePanel === 'dates' ? null : 'dates')}>
+            <div
+              className={styles.field}
+              onClick={() => setActivePanel(activePanel === 'dates' ? null : 'dates')}
+            >
               <Calendar size={16} className={styles.fieldIcon} />
               <div className={styles.fieldInner}>
                 <span className={styles.fieldLabel}>Check-out</span>
                 <span className={styles.fieldValue}>{formatDate(checkOut)}</span>
               </div>
               <span className={styles.nightBadge}>{nights}N</span>
+              <ChevronDown
+                size={14}
+                className={`${styles.chevron} ${activePanel === 'dates' ? styles.chevronOpen : ''}`}
+              />
             </div>
 
             <div className={styles.divider} />
 
             {/* Guests */}
-            <div className={styles.field} onClick={() => setActivePanel(activePanel === 'guests' ? null : 'guests')}>
+            <div
+              className={styles.field}
+              onClick={() => setActivePanel(activePanel === 'guests' ? null : 'guests')}
+            >
               <Users size={16} className={styles.fieldIcon} />
               <div className={styles.fieldInner}>
                 <span className={styles.fieldLabel}>Guests</span>
-                <span className={styles.fieldValue}>{guests} {guests === 1 ? 'Guest' : 'Guests'}</span>
+                <span className={styles.fieldValue}>
+                  {guests} {guests === 1 ? 'Guest' : 'Guests'}
+                </span>
               </div>
+              <ChevronDown
+                size={14}
+                className={`${styles.chevron} ${activePanel === 'guests' ? styles.chevronOpen : ''}`}
+              />
             </div>
 
             {/* Search Button */}
@@ -203,7 +248,10 @@ export const HeroSearch: React.FC = () => {
               </div>
               <div className={styles.popularLabel}>Popular Destinations</div>
               <div className={styles.cityGrid}>
-                {(suggestions.length > 0 ? suggestions.map((s) => ({ label: s.label, value: s.value || s.label })) : POPULAR_CITIES.map(c => ({ label: c, value: c }))).map((item, i) => (
+                {(suggestions.length > 0
+                  ? suggestions.map((s) => ({ label: s.label, value: s.value || s.label }))
+                  : POPULAR_CITIES.map((c) => ({ label: c, value: c }))
+                ).map((item, i) => (
                   <button
                     key={i}
                     className={`${styles.cityChip} ${destination === item.value ? styles.cityChipActive : ''}`}
@@ -250,7 +298,10 @@ export const HeroSearch: React.FC = () => {
               </div>
               <button
                 className={styles.applyBtn}
-                onClick={(e) => { e.stopPropagation(); setActivePanel(null); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActivePanel(null);
+                }}
               >
                 Apply — {nights} night{nights !== 1 ? 's' : ''}
               </button>
@@ -265,9 +316,19 @@ export const HeroSearch: React.FC = () => {
                   <div className={styles.guestSub}>Ages 13 or above</div>
                 </div>
                 <div className={styles.counter}>
-                  <button className={styles.counterBtn} onClick={() => setGuests(Math.max(1, guests - 1))}>−</button>
+                  <button
+                    className={styles.counterBtn}
+                    onClick={() => setGuests(Math.max(1, guests - 1))}
+                  >
+                    −
+                  </button>
                   <span className={styles.counterVal}>{guests}</span>
-                  <button className={styles.counterBtn} onClick={() => setGuests(Math.min(10, guests + 1))}>+</button>
+                  <button
+                    className={styles.counterBtn}
+                    onClick={() => setGuests(Math.min(10, guests + 1))}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             </div>

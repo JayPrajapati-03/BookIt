@@ -113,6 +113,7 @@
 }
 
 .fieldInner {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -138,7 +139,7 @@
 
 .chevron {
   color: var(--text-muted);
-  margin-left: auto;
+  margin-left: 2px;
   flex-shrink: 0;
   transition: transform 150ms ease;
 }
@@ -148,7 +149,7 @@
 }
 
 .nightBadge {
-  margin-left: auto;
+  margin-left: 4px;
   background: var(--color-sand);
   color: var(--color-tide);
   font-size: 0.6875rem;
