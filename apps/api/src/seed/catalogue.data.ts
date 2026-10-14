@@ -400,23 +400,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 110,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945',
+        url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4',
         alt: 'The Himalayan Manali castle resort exterior',
       },
       {
-        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
+        url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b',
         alt: 'The Himalayan Manali serviced residence and garden',
       },
       {
-        url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
+        url: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99',
         alt: 'The Himalayan Manali outdoor pool and castle building',
       },
       {
-        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
+        url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba',
         alt: 'The Himalayan Manali guest room interior',
       },
       {
-        url: 'https://images.unsplash.com/photo-1540541338287-41700207dee6',
+        url: 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3',
         alt: 'The Himalayan Manali cottage bedroom',
       },
     ],
@@ -668,23 +668,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 160,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Hotel_Marine_Plaza%2C_Marine_Drive%2C_Mumbai.jpg',
         alt: 'Abode Bombay heritage room interior',
       },
       {
-        url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Sea_Green_Hotel_at_Marine_Drive%2C_Mumbai.jpg',
         alt: 'Abode Bombay bedroom with heritage decor',
       },
       {
-        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
+        url: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f',
         alt: 'Abode Bombay styled room detail',
       },
       {
-        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
+        url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b',
         alt: 'Abode Bombay guest room',
       },
       {
-        url: 'https://images.unsplash.com/photo-1540541338287-41700207dee6',
+        url: 'https://images.unsplash.com/photo-1566412030210-2f3e1e0d9f0c',
         alt: 'Abode Bombay lounge and seating area',
       },
     ],
