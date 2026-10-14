@@ -250,8 +250,8 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 88,
     images: [
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/49172981.jpg?k=fa385076118ff86720bcbf0cc05f7649ae90bbbe522bd3da72af1a13891eeb3d&o=&hp=1',
-        alt: 'Brunton Boatyard waterfront view over Fort Kochi harbor',
+        url: 'https://imagecontent.net/images/full/36a60cfc-b7f3-4d1a-9e49-e04d90da4be3.jpeg',
+        alt: 'Brunton Boatyard heritage hotel facade in Fort Kochi',
       },
       {
         url: 'https://r2imghtlak.ibcdn.com/r2-mmt-htl-image/htl-imgs/200701220831569291-3efa6a64-d4fb-4d24-90f2-cf63645756ce.jpg',
@@ -668,23 +668,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 160,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a',
+        url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945',
         alt: 'Abode Bombay heritage room interior',
       },
       {
-        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
+        url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
         alt: 'Abode Bombay bedroom with heritage decor',
       },
       {
-        url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b',
+        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
         alt: 'Abode Bombay styled room detail',
       },
       {
-        url: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39',
+        url: 'https://images.unsplash.com/photo-1540541338287-41700207dee6',
         alt: 'Abode Bombay guest room',
       },
       {
-        url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
+        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
         alt: 'Abode Bombay lounge and seating area',
       },
     ],
