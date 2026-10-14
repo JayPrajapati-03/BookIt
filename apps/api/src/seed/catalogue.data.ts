@@ -228,15 +228,15 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ],
   },
   {
-    name: 'Malabar Heritage Harbor House',
+    name: 'Brunton Boatyard - CGH Earth',
     slug: 'malabar-heritage-harbor-house-kochi',
-    tagline: 'Dutch colonial spice warehouse overlooking the shipping channel',
+    tagline: 'Restored colonial shipyard hotel on the Fort Kochi waterfront',
     description:
-      'Carefully preserved 300-year-old trade warehouse on the water in historic Fort Kochi. Watch wooden fishing dhows and cargo ships glide past while dining under broad mango trees.',
+      'A heritage waterfront hotel built on the site of a former British boatyard in historic Fort Kochi, with colonial verandas, harbor-facing rooms, and sunset views over the shipping channel.',
     city: 'Kochi',
     state: 'Kerala',
-    address: '1/284 Parade Ground Road, Fort Kochi',
-    location: { type: 'Point', coordinates: [76.2415, 9.9658] },
+    address: '1/498 Calvetty Road, Fort Kochi',
+    location: { type: 'Point', coordinates: [76.2427, 9.9668] },
     propertyType: 'boutique',
     amenities: [
       'Harbor View',
@@ -250,24 +250,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 88,
     images: [
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Fort_Kochi-Chinese_Fishing_Nets-WUS-09102.jpg',
-        alt: 'Chinese fishing nets on the Fort Kochi waterfront',
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/49172981.jpg?k=fa385076118ff86720bcbf0cc05f7649ae90bbbe522bd3da72af1a13891eeb3d&o=&hp=1',
+        alt: 'Brunton Boatyard waterfront view over Fort Kochi harbor',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_fishing_nets_in_Fort_Kochi%2C_India%2C_2_March_2019-3.jpg',
-        alt: 'Chinese fishing nets in Fort Kochi harbor',
+        url: 'https://r2imghtlak.ibcdn.com/r2-mmt-htl-image/htl-imgs/200701220831569291-3efa6a64-d4fb-4d24-90f2-cf63645756ce.jpg',
+        alt: 'Brunton Boatyard heritage facade and pool at dusk',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Exterior_of_Forte_Kochi_-_a_heritage_hotel_in_Fort_Kochi%2C_Kerala.jpg',
-        alt: 'Heritage hotel exterior in Fort Kochi Kerala',
+        url: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/b5/2e/de/caption.jpg?h=2200&s=1&w=2200',
+        alt: 'Brunton Boatyard Fort Kochi facade with pool and palms',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bastion_Bungalow%2C_Fort_Kochi.jpg',
-        alt: 'Bastion Bungalow heritage building in Fort Kochi',
+        url: 'https://static-img.bag2bag.in/property-images/img-949x449/kochi/brunton-boatyard-%E2%80%93-cgh-earth/1681218294564.webp?format=webp&quality=90',
+        alt: 'Brunton Boatyard poolside with dolphin sculpture',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/St_Francis_Church_Fort_Kochi.jpg',
-        alt: 'St Francis Church in Fort Kochi heritage district',
+        url: 'https://i.pinimg.com/originals/1f/b2/e2/1fb2e2ea9517b06ebbfc9e8fd41ff05e.jpg',
+        alt: 'Brunton Boatyard colonial building beside the pool',
       },
     ],
     roomTypes: [
@@ -384,15 +384,15 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ],
   },
   {
-    name: 'Cedar Mist Mountain Lodge',
+    name: 'The Himalayan Manali',
     slug: 'cedar-mist-mountain-lodge-manali',
-    tagline: 'Hand-hewn cedar chalet with Himalayan snow-peak panoramas',
+    tagline: 'Gothic castle-style luxury resort above Manali',
     description:
-      'Perched high in Old Manali among ancient deodar forests. Features wood-burning stone fireplaces, handmade wool rugs, and glass-front verandas overlooking the snow-capped Pir Panjal range.',
+      'A castle-style luxury resort in Manali with cedar forests, mountain views, cottages, suites, and an outdoor pool framed by the Himalayas.',
     city: 'Manali',
     state: 'Himachal Pradesh',
-    address: 'Upper Log Huts Road, Old Manali',
-    location: { type: 'Point', coordinates: [77.1892, 32.2396] },
+    address: 'Hadimba Road, Siyal, Manali',
+    location: { type: 'Point', coordinates: [77.1839, 32.244] },
     propertyType: 'lodge',
     amenities: ['Fireplace in Room', 'Mountain View', 'Trekking Guide', 'Heated Bedding', 'WiFi'],
     starRating: 4,
@@ -400,24 +400,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 110,
     images: [
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Himalayan_mountains_in_Manali%2C_Himachal_Pradesh.jpg',
-        alt: 'Himalayan mountains in Manali, Himachal Pradesh',
+        url: 'https://thehimalayan.in/galnew/luxuryresortmanali.jpg',
+        alt: 'The Himalayan Manali castle resort exterior',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/MANALIIMTS.jpg',
-        alt: 'Mountains seen from forest track near Manali helipad',
+        url: 'https://thehimalayan.in/galnew/servicedresidencemanali.jpg',
+        alt: 'The Himalayan Manali serviced residence and garden',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mountains_of_Manali.jpg',
-        alt: 'Snow mountains and forest in Manali',
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/29974542.jpg?k=a7cd92c37a3dfecf65e6b9dd9ac6878f5edec8af72b9ce1e082055cf32083cf8&o=&hp=1',
+        alt: 'The Himalayan Manali outdoor pool and castle building',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Manali_mountains_India.jpg',
-        alt: 'Manali mountain valley in Himachal Pradesh',
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/29974646.jpg?k=700531a37d0bcacb64d7c5847058d13886c1384ddf8c981388df03420e55a366&o=&hp=1',
+        alt: 'The Himalayan Manali guest room interior',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Manali_%2CHimachal_Pradesh%2C_India.jpg',
-        alt: 'Manali landscape in Himachal Pradesh',
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/29974462.jpg?k=82f7058d239187397a82944edb5ee0e5480feb9452211f847d6606d975fe3b89&o=&hp=1',
+        alt: 'The Himalayan Manali cottage bedroom',
       },
     ],
     roomTypes: [
@@ -490,15 +490,15 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ],
   },
   {
-    name: 'Ananda Riverside Yoga Sanctuary',
+    name: 'Ananda in the Himalayas',
     slug: 'ananda-riverside-yoga-sanctuary-rishikesh',
-    tagline: 'Holistic wellness and mindfulness escape in the Himalayan foothills',
+    tagline: 'Destination wellness retreat in the Himalayan foothills',
     description:
-      'Surrounded by sal forests on the banks of the turquoise upper Ganges. Features daily hatha yoga, organic Ayurvedic nutrition, sound healing, and river rapids rafting.',
+      'A luxury wellness retreat set on a Maharaja palace estate near Rishikesh, known for Ayurveda, yoga, meditation, spa therapies, and Himalayan foothill views.',
     city: 'Rishikesh',
     state: 'Uttarakhand',
-    address: 'Tapovan Badrinath Road',
-    location: { type: 'Point', coordinates: [78.3242, 30.1345] },
+    address: 'The Palace Estate, Narendra Nagar',
+    location: { type: 'Point', coordinates: [78.2864, 30.1614] },
     propertyType: 'resort',
     amenities: [
       'Yoga Shala',
@@ -512,24 +512,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 104,
     images: [
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges_at_Rishikesh_from_Lakshman_Jhula.jpg',
-        alt: 'Ganges river at Rishikesh from Lakshman Jhula',
+        url: 'https://static2.tripoto.com/media/filter/tst/img/1504384/TripDocument/1578999458_ananda_spa_0.jpg',
+        alt: 'Ananda in the Himalayas palace estate exterior',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges_river_near_Lakshman_Jhula.jpg',
-        alt: 'Ganges river near Lakshman Jhula in Rishikesh',
+        url: 'https://www.theluxevoyager.com/wp-content/uploads/2020/09/Ananda-in-the-Himalayas-Pool-1.jpeg',
+        alt: 'Ananda in the Himalayas outdoor swimming pool',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Parmarth_Niketan%2C_Rishikesh%2C_Uttarakhand.jpg',
-        alt: 'Parmarth Niketan ashram in Rishikesh',
+        url: 'https://images.trvl-media.com/lodging/1000000/30000/21900/21887/2da1358e.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill',
+        alt: 'Ananda in the Himalayas guest room',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Morning_Yoga_class_at_Parmarth_Niketan%2C_Muni_Ki_Reti%2C_Rishikesh.jpg',
-        alt: 'Morning yoga class at Parmarth Niketan in Rishikesh',
+        url: 'https://www.cntraveller.in/wp-content/uploads/2019/02/Ananda-in-the-Himalayas-Uttarakhand-India-866x487.jpg',
+        alt: 'Ananda in the Himalayas spa and retreat setting',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lakshman_Jhula_Rishikesh.jpg',
-        alt: 'Lakshman Jhula view in Rishikesh',
+        url: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/b7/c8/3f/ananda-in-the-himalayas.jpg?w=1200&h=-1&s=1',
+        alt: 'Ananda in the Himalayas terrace and hillside view',
       },
     ],
     roomTypes: [
@@ -646,15 +646,15 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ],
   },
   {
-    name: 'The Colaba Art Deco Residence',
+    name: 'Abode Bombay',
     slug: 'the-colaba-art-deco-residence-mumbai',
-    tagline: '1930s seaside Art Deco boutique near the Gateway of India',
+    tagline: 'Boutique heritage stay in Colaba near the Gateway of India',
     description:
-      'Nestled behind the historic Taj Mahal Palace in South Mumbai. Beautiful terrazzo tile flooring, chrome fittings, private book collections, and views toward the Arabian Sea harbor.',
+      'A restored boutique hotel in Colaba with vintage Bombay character, handcrafted interiors, warm lounge spaces, and easy access to the Gateway of India.',
     city: 'Mumbai',
     state: 'Maharashtra',
-    address: '12 Merryweather Road, Colaba',
-    location: { type: 'Point', coordinates: [72.8317, 18.922] },
+    address: '18 Lansdowne House, M.B. Marg, Apollo Bunder, Colaba',
+    location: { type: 'Point', coordinates: [72.8324, 18.9222] },
     propertyType: 'boutique',
     amenities: [
       'Art Deco Architecture',
@@ -668,24 +668,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 160,
     images: [
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Gateway_of_India_and_the_Taj_Mahal_Palace_Hotel.jpg',
-        alt: 'Gateway of India and Taj Mahal Palace near Colaba',
+        url: 'https://gos3.ibcdn.com/90b61020bf0d11e7a75d025f77df004f.jpg',
+        alt: 'Abode Bombay heritage room interior',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Front_view_of_Regal_Cinema%2C_Colaba%2C_Mumbai.jpg',
-        alt: 'Front view of Regal Cinema Art Deco building in Colaba',
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/129961594.jpg?k=2872111405f72aff1987f67630d2dd1c43dd77e7e4a5e1c881f90a1ac4c93b4b&o=&hp=1',
+        alt: 'Abode Bombay bedroom with heritage decor',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Side_view_of_Regal_Cinema%2C_Colaba%2C_Mumbai.jpg',
-        alt: 'Side view of Regal Cinema in Colaba Mumbai',
+        url: 'https://cdn.sanity.io/images/ocl5w36p/production/27572dfd2ff1ef977ba9e0d0c9502fd3bf507b7f-600x600.webp',
+        alt: 'Abode Bombay styled room detail',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/EROS_Cinemas.jpg',
-        alt: 'Eros Cinema Art Deco building in South Mumbai',
+        url: 'https://images.trvl-media.com/lodging/11000000/10350000/10342400/10342343/fb0018e3.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill',
+        alt: 'Abode Bombay guest room',
       },
       {
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Beautiful_Art_Deco_interiors_on_the_ground_floor_of_Eros_Cinema.jpg',
-        alt: 'Art Deco interiors at Eros Cinema in Mumbai',
+        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/129961673.jpg?k=09204a4c8feb367b5f68f0e1d620d0ef7fac564a7284b0d8c5f88b826f6d2ff4&o=&hp=1',
+        alt: 'Abode Bombay lounge and seating area',
       },
     ],
     roomTypes: [
