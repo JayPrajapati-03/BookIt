@@ -400,23 +400,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 110,
     images: [
       {
-        url: 'https://thehimalayan.in/galnew/luxuryresortmanali.jpg',
+        url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945',
         alt: 'The Himalayan Manali castle resort exterior',
       },
       {
-        url: 'https://thehimalayan.in/galnew/servicedresidencemanali.jpg',
+        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
         alt: 'The Himalayan Manali serviced residence and garden',
       },
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/29974542.jpg?k=a7cd92c37a3dfecf65e6b9dd9ac6878f5edec8af72b9ce1e082055cf32083cf8&o=&hp=1',
+        url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
         alt: 'The Himalayan Manali outdoor pool and castle building',
       },
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/29974646.jpg?k=700531a37d0bcacb64d7c5847058d13886c1384ddf8c981388df03420e55a366&o=&hp=1',
+        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
         alt: 'The Himalayan Manali guest room interior',
       },
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/29974462.jpg?k=82f7058d239187397a82944edb5ee0e5480feb9452211f847d6606d975fe3b89&o=&hp=1',
+        url: 'https://images.unsplash.com/photo-1540541338287-41700207dee6',
         alt: 'The Himalayan Manali cottage bedroom',
       },
     ],
