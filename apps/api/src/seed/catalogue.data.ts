@@ -668,23 +668,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 160,
     images: [
       {
-        url: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Hotel_Marine_Plaza%2C_Marine_Drive%2C_Mumbai.jpg',
+        url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a',
         alt: 'Abode Bombay heritage room interior',
       },
       {
-        url: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Sea_Green_Hotel_at_Marine_Drive%2C_Mumbai.jpg',
+        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
         alt: 'Abode Bombay bedroom with heritage decor',
       },
       {
-        url: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f',
+        url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b',
         alt: 'Abode Bombay styled room detail',
       },
       {
-        url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b',
+        url: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39',
         alt: 'Abode Bombay guest room',
       },
       {
-        url: 'https://images.unsplash.com/photo-1566412030210-2f3e1e0d9f0c',
+        url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461',
         alt: 'Abode Bombay lounge and seating area',
       },
     ],
