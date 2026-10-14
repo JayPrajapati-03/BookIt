@@ -652,8 +652,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 160,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb',
-        alt: '1930s Art Deco facade near Gateway of India',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Gateway_of_India_and_the_Taj_Mahal_Palace_Hotel.jpg',
+        alt: 'Gateway of India and Taj Mahal Palace near Colaba',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Front_view_of_Regal_Cinema%2C_Colaba%2C_Mumbai.jpg',
+        alt: 'Front view of Regal Cinema Art Deco building in Colaba',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Side_view_of_Regal_Cinema%2C_Colaba%2C_Mumbai.jpg',
+        alt: 'Side view of Regal Cinema in Colaba Mumbai',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/EROS_Cinemas.jpg',
+        alt: 'Eros Cinema Art Deco building in South Mumbai',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Beautiful_Art_Deco_interiors_on_the_ground_floor_of_Eros_Cinema.jpg',
+        alt: 'Art Deco interiors at Eros Cinema in Mumbai',
       },
     ],
     roomTypes: [
