@@ -186,12 +186,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 142,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4',
-        alt: 'Clifftop fortress over Arabian Sea',
+        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_473%2Cw_2160%2Ch_1214%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/%40brendanavanson_8f423001',
+        alt: 'Fort Tiracol on a green headland overlooking the river and sea',
       },
       {
-        url: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c',
-        alt: 'Ocean sunset deck',
+        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_120%2Cw_1281%2Ch_720%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/Drone_1_5e37d9fc',
+        alt: 'Aerial coastline view of Fort Tiracol Goa',
+      },
+      {
+        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_209%2Cw_965%2Ch_542%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/Dron_2_164675a2',
+        alt: 'Aerial view of Fort Tiracol building above the ocean',
+      },
+      {
+        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_1156%2Cw_3000%2Ch_1688%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/1970-01-01_05.30.00_193_d456b023',
+        alt: 'Balcony dining setup with bay view at Fort Tiracol',
+      },
+      {
+        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_108%2Cw_1152%2Ch_648%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/d6cef2e3-61bc-4396-b711-9324ae01714a_7eed6311',
+        alt: 'Indoor restaurant at Fort Tiracol Goa',
       },
     ],
     roomTypes: [
@@ -372,8 +384,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 110,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4',
-        alt: 'Cedar lodge with Himalayan snow peaks',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Himalayan_mountains_in_Manali%2C_Himachal_Pradesh.jpg',
+        alt: 'Himalayan mountains in Manali, Himachal Pradesh',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/MANALIIMTS.jpg',
+        alt: 'Mountains seen from forest track near Manali helipad',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mountains_of_Manali.jpg',
+        alt: 'Snow mountains and forest in Manali',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Manali_mountains_India.jpg',
+        alt: 'Manali mountain valley in Himachal Pradesh',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Manali_%2CHimachal_Pradesh%2C_India.jpg',
+        alt: 'Manali landscape in Himachal Pradesh',
       },
     ],
     roomTypes: [
@@ -468,8 +496,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 104,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1488085061387-422e29b40080',
-        alt: 'Riverside yoga shala in Himalayan foothills',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges_at_Rishikesh_from_Lakshman_Jhula.jpg',
+        alt: 'Ganges river at Rishikesh from Lakshman Jhula',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges_river_near_Lakshman_Jhula.jpg',
+        alt: 'Ganges river near Lakshman Jhula in Rishikesh',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Parmarth_Niketan%2C_Rishikesh%2C_Uttarakhand.jpg',
+        alt: 'Parmarth Niketan ashram in Rishikesh',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Morning_Yoga_class_at_Parmarth_Niketan%2C_Muni_Ki_Reti%2C_Rishikesh.jpg',
+        alt: 'Morning yoga class at Parmarth Niketan in Rishikesh',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lakshman_Jhula_Rishikesh.jpg',
+        alt: 'Lakshman Jhula view in Rishikesh',
       },
     ],
     roomTypes: [
