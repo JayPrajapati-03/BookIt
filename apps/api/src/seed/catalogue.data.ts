@@ -362,8 +362,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 52,
     images: [
       {
-        url: 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Asiatic_Lion_Gir_Forest_India.jpg',
-        alt: 'Asiatic Lion in Gir Forest National Park',
+        url: 'https://images.unsplash.com/photo-1756245994882-cf32d49fde5a?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Rustic safari lodge cottages overlooking scenic landscape',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1741850821836-a0228e561406?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Safari jeep on wildlife tour in the forest',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1568605115174-1a3a3820fdf2?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Eco stone cottage with veranda in the forest',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1704307023984-813727deade9?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Wooden cottage with deck surrounded by nature',
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1735423366959-c875a84a5a10?q=80&w=3000&auto=format&fit=crop',
+        alt: 'Safari vehicle on forest road adventure',
       },
     ],
     roomTypes: [
