@@ -512,23 +512,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 104,
     images: [
       {
-        url: 'https://static2.tripoto.com/media/filter/tst/img/1504384/TripDocument/1578999458_ananda_spa_0.jpg',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/8/88/Himalayan_view_from_Ananda_spa%2C_Narendra_Nagar.jpg',
         alt: 'Ananda in the Himalayas palace estate exterior',
       },
       {
-        url: 'https://www.theluxevoyager.com/wp-content/uploads/2020/09/Ananda-in-the-Himalayas-Pool-1.jpeg',
+        url: 'https://t.eucdn.in/hotels/lg/ananda-spa-resort-rishikesh-6074725.webp',
         alt: 'Ananda in the Himalayas outdoor swimming pool',
       },
       {
-        url: 'https://images.trvl-media.com/lodging/1000000/30000/21900/21887/2da1358e.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill',
+        url: 'https://t.eucdn.in/hotels/lg/ananda-spa-resort-rishikesh-9445475.webp',
         alt: 'Ananda in the Himalayas guest room',
       },
       {
-        url: 'https://www.cntraveller.in/wp-content/uploads/2019/02/Ananda-in-the-Himalayas-Uttarakhand-India-866x487.jpg',
+        url: 'https://t.eucdn.in/hotels/lg/ananda-spa-resort-rishikesh-8878797.webp',
         alt: 'Ananda in the Himalayas spa and retreat setting',
       },
       {
-        url: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/b7/c8/3f/ananda-in-the-himalayas.jpg?w=1200&h=-1&s=1',
+        url: 'https://t.eucdn.in/hotels/lg/ananda-spa-resort-rishikesh-4479668.webp',
         alt: 'Ananda in the Himalayas terrace and hillside view',
       },
     ],
