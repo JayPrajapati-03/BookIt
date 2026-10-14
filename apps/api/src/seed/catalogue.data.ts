@@ -668,23 +668,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 160,
     images: [
       {
-        url: 'https://gos3.ibcdn.com/90b61020bf0d11e7a75d025f77df004f.jpg',
+        url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945',
         alt: 'Abode Bombay heritage room interior',
       },
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/129961594.jpg?k=2872111405f72aff1987f67630d2dd1c43dd77e7e4a5e1c881f90a1ac4c93b4b&o=&hp=1',
+        url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
         alt: 'Abode Bombay bedroom with heritage decor',
       },
       {
-        url: 'https://cdn.sanity.io/images/ocl5w36p/production/27572dfd2ff1ef977ba9e0d0c9502fd3bf507b7f-600x600.webp',
+        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
         alt: 'Abode Bombay styled room detail',
       },
       {
-        url: 'https://images.trvl-media.com/lodging/11000000/10350000/10342400/10342343/fb0018e3.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill',
+        url: 'https://images.unsplash.com/photo-1590490360182-c33d57733427',
         alt: 'Abode Bombay guest room',
       },
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/129961673.jpg?k=09204a4c8feb367b5f68f0e1d620d0ef7fac564a7284b0d8c5f88b826f6d2ff4&o=&hp=1',
+        url: 'https://images.unsplash.com/photo-1540541338287-41700207dee6',
         alt: 'Abode Bombay lounge and seating area',
       },
     ],
