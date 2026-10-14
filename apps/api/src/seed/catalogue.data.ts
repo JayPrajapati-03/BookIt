@@ -464,8 +464,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 95,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1529290130-4ca3753253ae',
-        alt: 'Sacred Ganges river view at dawn',
+        url: 'https://images.pexels.com/photos/32592677/pexels-photo-32592677.jpeg?auto=compress&cs=tinysrgb&w=3000',
+        alt: 'Varanasi ghats along the sacred Ganges river',
+      },
+      {
+        url: 'https://images.pexels.com/photos/31729848/pexels-photo-31729848.jpeg?auto=compress&cs=tinysrgb&w=3000',
+        alt: 'Historic ghats of Varanasi by the Ganges',
+      },
+      {
+        url: 'https://images.pexels.com/photos/35729427/pexels-photo-35729427.jpeg?auto=compress&cs=tinysrgb&w=3000',
+        alt: 'Night view of Varanasi ghats along the Ganges',
+      },
+      {
+        url: 'https://images.pexels.com/photos/31072582/pexels-photo-31072582.jpeg?auto=compress&cs=tinysrgb&w=3000',
+        alt: 'Spiritual morning ritual on Varanasi ghat',
+      },
+      {
+        url: 'https://images.pexels.com/photos/28556187/pexels-photo-28556187.jpeg?auto=compress&cs=tinysrgb&w=3000',
+        alt: 'Ganga Aarti ceremony on the ghats of Varanasi',
       },
     ],
     roomTypes: [
