@@ -250,8 +250,24 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 88,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1',
-        alt: 'Dutch colonial harbor view',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Fort_Kochi-Chinese_Fishing_Nets-WUS-09102.jpg',
+        alt: 'Chinese fishing nets on the Fort Kochi waterfront',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_fishing_nets_in_Fort_Kochi%2C_India%2C_2_March_2019-3.jpg',
+        alt: 'Chinese fishing nets in Fort Kochi harbor',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Exterior_of_Forte_Kochi_-_a_heritage_hotel_in_Fort_Kochi%2C_Kerala.jpg',
+        alt: 'Heritage hotel exterior in Fort Kochi Kerala',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bastion_Bungalow%2C_Fort_Kochi.jpg',
+        alt: 'Bastion Bungalow heritage building in Fort Kochi',
+      },
+      {
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/St_Francis_Church_Fort_Kochi.jpg',
+        alt: 'St Francis Church in Fort Kochi heritage district',
       },
     ],
     roomTypes: [
