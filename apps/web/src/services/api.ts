@@ -11,7 +11,7 @@ export function getAccessToken(): string | null {
 }
 
 export const apiClient: AxiosInstance = axios.create({
-  baseURL: (import.meta as any).env?.VITE_API_BASE_URL || '/api',
+  baseURL: (import.meta as any).env?.VITE_API_URL || (import.meta as any).env?.VITE_API_BASE_URL || '/api',
   withCredentials: true, // send httpOnly refresh-token cookie
   headers: { 'Content-Type': 'application/json' },
   timeout: 15000,
@@ -94,8 +94,13 @@ export async function getHotelSuggestions(query: string): Promise<HotelSuggestio
   const q = query.trim();
   if (!q) return [];
 
-  const res = await hotelsApi.suggest(q);
-  return res.data.data || [];
+  try {
+    const res = await hotelsApi.suggest(q);
+    return res.data?.data || [];
+  } catch (error) {
+    console.error('Error fetching hotel suggestions:', error);
+    return [];
+  }
 }
 
 // ─── Bookings ─────────────────────────────────────────────────────────────────
