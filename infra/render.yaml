@@ -36,14 +36,13 @@ services:
       - key: NODE_ENV
         value: production
       - key: API_URL
-        sync: false
         value: https://bookit-api.onrender.com
       - key: VITE_API_URL
-        sync: false
         value: https://bookit-api.onrender.com
 
 databases:
   # MongoDB Database
-  - name: bookit-mongo
+  - type: mongo
+    name: bookit-mongo
     databaseName: bookit
     user: bookit_user
