@@ -27,16 +27,15 @@ export const helmetMiddleware = helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
 });
 
-const allowedOrigins = [env.WEB_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'];
+const allowedOrigins = [
+  env.WEB_URL,
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  '*'
+];
 
 export const corsMiddleware = cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new AppError('Blocked by CORS policy', 'FORBIDDEN', 403));
-    }
-  },
+  origin: true, // Allow all origins for now
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Idempotency-Key', 'x-request-id'],
