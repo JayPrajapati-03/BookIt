@@ -70,11 +70,15 @@ export const OpenTonight: React.FC = () => {
                   <img
                     src={
                       h.images[0]?.url ||
-                      'https://images.unsplash.com/photo-1566073771259-6a8506099945'
+                      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'
                     }
                     alt={h.name}
                     className={styles.image}
                     loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80';
+                    }}
                   />
                 </div>
                 <div className={styles.content}>

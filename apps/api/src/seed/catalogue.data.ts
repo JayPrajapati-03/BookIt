@@ -198,23 +198,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 142,
     images: [
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_473%2Cw_2160%2Ch_1214%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/%40brendanavanson_8f423001',
+        url: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80',
         alt: 'Fort Tiracol on a green headland overlooking the river and sea',
       },
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_120%2Cw_1281%2Ch_720%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/Drone_1_5e37d9fc',
+        url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
         alt: 'Aerial coastline view of Fort Tiracol Goa',
       },
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_209%2Cw_965%2Ch_542%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/Dron_2_164675a2',
+        url: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80',
         alt: 'Aerial view of Fort Tiracol building above the ocean',
       },
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_1156%2Cw_3000%2Ch_1688%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/1970-01-01_05.30.00_193_d456b023',
+        url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
         alt: 'Balcony dining setup with bay view at Fort Tiracol',
       },
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_108%2Cw_1152%2Ch_648%2Cr_0%2Cc_crop/q_80%2Cw_900%2Cdpr_1%2Cf_auto%2Cfl_progressive%2Cc_limit/fort-tiracol-goa/d6cef2e3-61bc-4396-b711-9324ae01714a_7eed6311',
+        url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
         alt: 'Indoor restaurant at Fort Tiracol Goa',
       },
     ],
@@ -867,23 +867,23 @@ export const SEED_PROPERTIES: SeedPropertyData[] = [
     ratingCount: 178,
     images: [
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/w_900%2Ch_600%2Cc_fill%2Cg_auto%2Cq_80%2Cf_auto/fateh-garh/Infinity_Swimming_Pool_Baradari_Restaurant_-_2_hwtx6b',
+        url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
         alt: 'Fateh Garh Baradari terrace and pool',
       },
       {
-        url: 'https://www.goldentriangletoursinindia.com/uploads/fateh-garh-udaipur.webp',
+        url: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80',
         alt: 'Fateh Garh palace facade at dusk',
       },
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/w_600%2Ch_400%2Cc_fill%2Cg_auto%2Cq_80%2Cf_auto/fateh-collection/1_-_Suraj_Gokhda_rpgdnu',
+        url: 'https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&w=1200&q=80',
         alt: 'Fateh Garh private dining with Aravalli views',
       },
       {
-        url: 'https://assets.simplotel.com/simplotel/image/upload/x_0%2Cy_188%2Cw_3600%2Ch_2024%2Cr_0%2Cc_crop%2Cq_80%2Cfl_progressive/w_900%2Cf_auto%2Cc_fit/fateh-garh/095_jvifec',
+        url: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80',
         alt: 'Fateh Garh marble lounge and carved pillars',
       },
       {
-        url: 'https://cdn.audleytravel.com/1050/750/79/329987-pool-at-fateh-garh-udaipur.jpg',
+        url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
         alt: 'Fateh Garh illuminated pool at night',
       },
     ],

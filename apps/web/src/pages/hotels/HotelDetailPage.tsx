@@ -165,11 +165,14 @@ export const HotelDetailPage: React.FC = () => {
       <div className={styles.mosaic}>
         <img
           src={
-            hotel.images[0]?.url || 'https://images.unsplash.com/photo-1566073771259-6a8506099945'
+            hotel.images[0]?.url || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80'
           }
           alt="Main property view"
           className={styles.heroPhoto}
           onClick={() => setActivePhoto(hotel.images[0]?.url)}
+          onError={(e) => {
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80';
+          }}
         />
         {hotel.images.slice(1, 5).map((img, idx) => (
           <img
@@ -178,6 +181,9 @@ export const HotelDetailPage: React.FC = () => {
             alt={img.alt || 'Hotel gallery'}
             className={styles.subPhoto}
             onClick={() => setActivePhoto(img.url)}
+            onError={(e) => {
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80';
+            }}
           />
         ))}
       </div>

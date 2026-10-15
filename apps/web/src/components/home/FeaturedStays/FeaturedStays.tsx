@@ -90,6 +90,9 @@ export const FeaturedStays: React.FC = () => {
                       alt={h.name}
                       className={styles.image}
                       loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.src = FALLBACK_IMAGES[idx % 4];
+                      }}
                     />
                     <div className={styles.imageOverlay} />
                     <div className={styles.liveBadge}>
