@@ -1,4 +1,5 @@
 services:
+  # Backend API Service
   - type: web
     name: bookit-api
     env: node
@@ -23,3 +24,26 @@ services:
         sync: false
       - key: DEMO_MODE
         value: "true"
+
+  # Frontend Web Service
+  - type: web
+    name: bookit-web
+    env: node
+    plan: free
+    buildCommand: pnpm install && pnpm --filter @bookit/shared build && pnpm --filter @bookit/web build
+    startCommand: pnpm --filter @bookit/web exec vite preview --host 0.0.0.0 --port 10000
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_URL
+        sync: false
+        value: https://bookit-api.onrender.com
+      - key: VITE_API_URL
+        sync: false
+        value: https://bookit-api.onrender.com
+
+databases:
+  # MongoDB Database
+  - name: bookit-mongo
+    databaseName: bookit
+    user: bookit_user
