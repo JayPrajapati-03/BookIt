@@ -42,7 +42,6 @@ services:
 
 databases:
   # MongoDB Database
-  - type: mongo
-    name: bookit-mongo
+  - name: bookit-mongo
     databaseName: bookit
     user: bookit_user
