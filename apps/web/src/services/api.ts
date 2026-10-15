@@ -12,7 +12,7 @@ export function getAccessToken(): string | null {
 
 export const apiClient: AxiosInstance = axios.create({
   baseURL: (import.meta as any).env?.VITE_API_URL || (import.meta as any).env?.VITE_API_BASE_URL || '/api/v1',
-  withCredentials: true, // send httpOnly refresh-token cookie
+  withCredentials: false, // Disable credentials for now to avoid SSL/CORS issues
   headers: { 'Content-Type': 'application/json' },
   timeout: 15000,
 });
