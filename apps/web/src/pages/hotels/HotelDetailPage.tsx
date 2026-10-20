@@ -416,7 +416,7 @@ export const HotelDetailPage: React.FC = () => {
             )}
 
             <Button variant="primary" size="lg" onClick={handleHoldRoom}>
-              Hold Room for 10 Mins
+              Reserve Now
             </Button>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center' }}>
               Zero prepayment required to lock in your dates.
