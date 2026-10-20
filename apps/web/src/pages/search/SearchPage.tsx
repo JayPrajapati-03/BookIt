@@ -3,7 +3,7 @@ import { useSearchParams, Link, useLocation, useNavigate } from 'react-router-do
 import { apiClient, wishlistApi } from '../../services/api.js';
 import { useAppSelector } from '../../store/hooks.js';
 import { Button, Skeleton, EmptyState } from '../../components/common/index.js';
-import { Map, List, MapPin, Star, Filter, Heart } from 'lucide-react';
+import { Map, List, MapPin, Filter, Heart } from 'lucide-react';
 import { HotelSearchMap } from './HotelSearchMap.js';
 import styles from './SearchPage.module.css';
 
@@ -382,10 +382,6 @@ export const SearchPage: React.FC = () => {
                           }}
                         />
                         <span className={styles.propertyBadge}>{h.propertyType}</span>
-                        <span className={styles.ratingBadge}>
-                          <Star size={11} fill="#d97706" color="#d97706" />
-                          {h.ratingAvg.toFixed(1)}
-                        </span>
                       </div>
                       <div className={styles.content}>
                         <div className={styles.cityLocation}>
