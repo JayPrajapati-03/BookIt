@@ -95,10 +95,7 @@ export const FeaturedStays: React.FC = () => {
                       }}
                     />
                     <div className={styles.imageOverlay} />
-                    <div className={styles.liveBadge}>
-                      <span className={styles.liveDot} />
-                      Live
-                    </div>
+
                     {h.ratingAvg >= 4.5 && (
                       <div className={styles.topBadge}>⭐ Top Rated</div>
                     )}
