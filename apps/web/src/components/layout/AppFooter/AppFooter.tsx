@@ -11,7 +11,7 @@ export const AppFooter: React.FC = () => {
           {/* Brand & Mission Column */}
           <div className={styles.brandCol}>
             <div className={styles.brandLogo}>
-              BookIt<span className={styles.logoDot} />
+              Book<span className={styles.logoHighlight}>It</span>
             </div>
             <p className={styles.tagline}>
               Curated boutique heritage hotels, royal havelis, and luxury retreats across India.

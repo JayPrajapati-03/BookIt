@@ -31,15 +31,22 @@
   letter-spacing: -0.02em;
   display: flex;
   align-items: center;
-  gap: 6px;
 }
 
-.logoDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--color-marigold);
-  display: inline-block;
+.logoHighlight {
+  background: linear-gradient(135deg, #f59e0b, #e67e22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logoAccent {
+  background: linear-gradient(135deg, #f59e0b, #e67e22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  margin-left: -1px;
 }
 
 .primaryNav {

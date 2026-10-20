@@ -51,12 +51,20 @@
   gap: 4px;
 }
 
-.logoDot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-marigold, #d97706);
+.logoHighlight {
+  background: linear-gradient(135deg, #f59e0b, #e67e22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logoAccent {
+  background: linear-gradient(135deg, #f59e0b, #e67e22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  margin-left: -1px;
 }
 
 .tagline {

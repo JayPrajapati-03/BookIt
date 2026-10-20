@@ -37,8 +37,7 @@ export const AppHeader: React.FC = () => {
       <div className={styles.inner}>
         <div className={styles.brandGroup}>
           <Link to="/" className={styles.logo}>
-            BookIt
-            <span className={styles.logoDot} />
+            Book<span className={styles.logoHighlight}>It</span>
           </Link>
         </div>
 
