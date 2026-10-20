@@ -96,9 +96,7 @@ export const FeaturedStays: React.FC = () => {
                     />
                     <div className={styles.imageOverlay} />
 
-                    {h.ratingAvg >= 4.5 && (
-                      <div className={styles.topBadge}>⭐ Top Rated</div>
-                    )}
+
                   </div>
 
                   {/* Content */}
