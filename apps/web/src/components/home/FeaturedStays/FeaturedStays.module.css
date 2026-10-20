@@ -1,6 +1,8 @@
 .section {
   padding: 80px 24px;
   background: var(--color-chalk);
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
 }
 
 .inner {

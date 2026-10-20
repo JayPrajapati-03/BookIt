@@ -90,6 +90,7 @@ export const FeaturedStays: React.FC = () => {
                       alt={h.name}
                       className={styles.image}
                       loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.currentTarget.src = FALLBACK_IMAGES[idx % 4];
                       }}

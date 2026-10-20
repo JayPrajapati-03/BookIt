@@ -1,6 +1,8 @@
 .section {
   background: var(--color-chalk);
   scroll-margin-top: 84px;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 650px;
 }
 
 .inner {

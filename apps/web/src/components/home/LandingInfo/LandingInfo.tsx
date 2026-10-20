@@ -8,36 +8,36 @@ const DESTINATIONS = [
     city: 'Udaipur',
     note: 'Lake palaces, havelis, and royal courtyards',
     image:
-      'https://commons.wikimedia.org/wiki/Special:FilePath/City%20Palace%20by%20lake%20Pichola%2C%20Udaipur.jpg',
+      'https://commons.wikimedia.org/wiki/Special:FilePath/City%20Palace%20by%20lake%20Pichola%2C%20Udaipur.jpg?width=600',
   },
   {
     city: 'Jaipur',
     note: 'Pink City mansions, forts, and palace stays',
     image:
-      'https://commons.wikimedia.org/wiki/Special:FilePath/Courtyard%20of%20Samode%20Haveli%2C%20Jaipur.jpg',
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Courtyard%20of%20Samode%20Haveli%2C%20Jaipur.jpg?width=600',
   },
   {
     city: 'Jodhpur',
     note: 'Blue City views below Mehrangarh Fort',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20city%20of%20Jodhpur.jpg',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20city%20of%20Jodhpur.jpg?width=600',
   },
   {
     city: 'Goa',
     note: 'Coastal boutique stays near quiet beaches',
     image:
-      'https://commons.wikimedia.org/wiki/Special:FilePath/Palolem%20Beach%2C%20South%20Goa.jpg',
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Palolem%20Beach%2C%20South%20Goa.jpg?width=600',
   },
   {
     city: 'Rishikesh',
     note: 'Riverside retreats in the Himalayan foothills',
     image:
-      'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges%20at%20Rishikesh%20from%20Lakshman%20Jhula.jpg',
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges%20at%20Rishikesh%20from%20Lakshman%20Jhula.jpg?width=600',
   },
   {
     city: 'Varanasi',
     note: 'Ghats, heritage homes, and old-city stays',
     image:
-      'https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20ghats%20at%20the%20sunrise.JPG',
+      'https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20ghats%20at%20the%20sunrise.JPG?width=600',
   },
 ];
 
@@ -64,7 +64,13 @@ export const LandingInfo: React.FC<LandingInfoProps> = ({ variant }) => {
                 to={`/search?city=${encodeURIComponent(item.city)}`}
                 className={styles.destinationCard}
               >
-                <img src={item.image} alt={`${item.city} destination`} className={styles.destinationImage} />
+                <img
+                  src={item.image}
+                  alt={`${item.city} destination`}
+                  className={styles.destinationImage}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span className={styles.destinationOverlay} />
                 <span className={styles.destinationContent}>
                   <span className={styles.destinationCity}>{item.city}</span>

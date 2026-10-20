@@ -3,6 +3,8 @@
   background: var(--color-lagoon);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
 }
 
 .section::before {

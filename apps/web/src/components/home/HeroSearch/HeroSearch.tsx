@@ -17,35 +17,35 @@ const POPULAR_CITIES = [
 
 const HERO_IMAGES: Record<string, { src: string; alt: string }> = {
   Udaipur: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/City%20Palace%20by%20lake%20Pichola%2C%20Udaipur.jpg',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/City%20Palace%20by%20lake%20Pichola%2C%20Udaipur.jpg?width=1600',
     alt: 'City Palace beside Lake Pichola in Udaipur',
   },
   Jaipur: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Courtyard%20of%20Samode%20Haveli%2C%20Jaipur.jpg',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Courtyard%20of%20Samode%20Haveli%2C%20Jaipur.jpg?width=1600',
     alt: 'Jaipur haveli courtyard',
   },
   Jodhpur: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20city%20of%20Jodhpur.jpg',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20city%20of%20Jodhpur.jpg?width=1600',
     alt: 'Blue city of Jodhpur viewed from Mehrangarh Fort',
   },
   Goa: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palolem%20Beach%2C%20South%20Goa.jpg',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palolem%20Beach%2C%20South%20Goa.jpg?width=1600',
     alt: 'Palolem Beach in South Goa',
   },
   Rishikesh: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges%20at%20Rishikesh%20from%20Lakshman%20Jhula.jpg',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ganges%20at%20Rishikesh%20from%20Lakshman%20Jhula.jpg?width=1600',
     alt: 'Ganges at Rishikesh from Lakshman Jhula',
   },
   Varanasi: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20ghats%20at%20the%20sunrise.JPG',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20ghats%20at%20the%20sunrise.JPG?width=1600',
     alt: 'Varanasi ghats at sunrise',
   },
   Shimla: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20and%20Hawa%20Ghar%20Mall%20road%2C%20Shimla.jpg',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20and%20Hawa%20Ghar%20Mall%20road%2C%20Shimla.jpg?width=1600',
     alt: 'Christ Church and Mall Road in Shimla',
   },
   Manali: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Himalayan%20mountains%20in%20Manali%2C%20Himachal%20Pradesh.jpg',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/The%20Himalayan%20mountains%20in%20Manali%2C%20Himachal%20Pradesh.jpg?width=1600',
     alt: 'Himalayan mountains in Manali',
   },
 };
@@ -59,9 +59,15 @@ function getHeroImage(destination: string) {
 }
 
 function preloadHeroImages() {
-  Object.values(HERO_IMAGES).forEach(({ src }) => {
-    const image = new Image();
-    image.src = src;
+  const schedule = typeof window !== 'undefined' && 'requestIdleCallback' in window
+    ? (cb: () => void) => (window as any).requestIdleCallback(cb, { timeout: 2000 })
+    : (cb: () => void) => setTimeout(cb, 1200);
+
+  schedule(() => {
+    Object.values(HERO_IMAGES).forEach(({ src }) => {
+      const image = new Image();
+      image.src = src;
+    });
   });
 }
 
@@ -133,7 +139,7 @@ export const HeroSearch: React.FC = () => {
     <section id="stays" className={styles.hero}>
       {/* Background Image with overlay */}
       <div className={styles.bg}>
-        <img src={heroImage.src} alt={heroImage.alt} className={styles.bgImg} />
+        <img src={heroImage.src} alt={heroImage.alt} className={styles.bgImg} decoding="async" />
         <div className={styles.bgOverlay} />
       </div>
 
